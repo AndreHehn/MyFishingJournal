@@ -1,1 +1,16 @@
-<p>journal works!</p>
+<mat-card>
+    <table class="user-table">
+        <tr>
+            <th>Fish</th>
+            <th>Length</th>
+            <th>Place</th>
+            <th>Date</th>
+        </tr>
+        <tr *ngFor="let fish of allFishes" [routerLink]="['/journal/' + fish.customId]" >
+            <td>{{fish.fish}}</td>
+            <td>{{fish.length}}</td>
+            <td>{{fish.place}}</td>
+            <td>{{fish.date * 1000 | date}}</td>
+        </tr>
+    </table>
+</mat-card>

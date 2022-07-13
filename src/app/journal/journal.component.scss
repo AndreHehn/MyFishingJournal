@@ -1,0 +1,52 @@
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+
+        &:first-child {
+            cursor: unset;
+
+            &:hover {
+                background-color: unset;
+            }
+
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        td {
+            height: 48px;
+
+            &:first-child {
+                border-bottom: 0;
+                padding-left: 16px;
+            }
+        }
+
+        th {
+
+            &:first-child {
+                border-bottom: 0;
+                padding-left: 16px;
+            }
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    }
+
+
+
+    th {
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 500;
+        font-size: 14px;
+        text-align: start;
+    }
+}
