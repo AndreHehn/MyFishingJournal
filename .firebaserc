@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "my-fishing-journal": {
+      "hosting": {
+        "my-fishing-journal": [
+          "my-fishing-journal"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "my-fishing-journal"
+  }
+}
