@@ -29,6 +29,10 @@
         }
 
         th {
+            span {
+                cursor: pointer;
+                &:hover{color: #fff; }
+            }
 
             &:first-child {
                 border-bottom: 0;

@@ -25,13 +25,17 @@ import { FormsModule } from '@angular/forms';
 import { JournalComponent } from './journal/journal.component';
 import { AddCatchComponent } from './add-catch/add-catch.component';
 import { FishingComponent } from './fishing/fishing.component';
+import { NotesComponent } from './notes/notes.component';
+import { AnalysisComponent } from './analysis/analysis.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JournalComponent,
     AddCatchComponent,
-    FishingComponent
+    FishingComponent,
+    NotesComponent,
+    AnalysisComponent
   ],
   imports: [
 

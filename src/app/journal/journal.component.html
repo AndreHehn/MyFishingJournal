@@ -1,10 +1,10 @@
 <mat-card>
     <table class="user-table">
         <tr>
-            <th>Fish</th>
-            <th>Length</th>
-            <th>Place</th>
-            <th>Date</th>
+            <th><span>Fish</span><div id="fish-arrow" class="sort-arrow"></div></th>
+            <th><span>Length</span><div id="length-arrow" class="sort-arrow"></div></th>
+            <th><span>Place</span><div id="place-arrow" class="sort-arrow"></div></th>
+            <th><span>Date</span><div id="date-arrow" class="sort-arrow"></div></th>
         </tr>
         <tr *ngFor="let fish of allFishes" [routerLink]="['/journal/' + fish.customId]" >
             <td>{{fish.fish}}</td>
