@@ -7,14 +7,12 @@ import { JournalComponent } from './journal/journal.component';
 import { NotesComponent } from './notes/notes.component';
 
 const routes: Routes = [
-  { path: '', component: JournalComponent },
-  { path: 'journal', component: JournalComponent },
-  { path: 'journal/:id', component: FishingComponent },
-  { path: 'addcatch', component: AddCatchComponent }
-  ,
-  { path: 'notes', component: NotesComponent }
-  ,
-  { path: 'analysis', component: AnalysisComponent }
+  { path: '', title: 'My fishing journal', component: JournalComponent },
+  { path: 'journal', title: 'My fishing journal', component: JournalComponent },
+  { path: 'journal/:id', title: 'Details of catch', component: FishingComponent },
+  { path: 'addcatch', title: 'Add new catch', component: AddCatchComponent },
+  { path: 'notes', title: 'Notes', component: NotesComponent },
+  { path: 'analysis', title: 'Analysis', component: AnalysisComponent }
 ];
 
 @NgModule({

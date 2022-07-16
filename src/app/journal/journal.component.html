@@ -2,45 +2,45 @@
     <table class="user-table">
         <tr>
             <th>
-                <div class="sorting-wrap" (click)="sortBy('fish')">
-                    <span>Fish</span>
+                <div class="sorting-wrap">
+                    <span (click)="sortBy('fish')">Fish</span>
                     <div class="icon-wrap">
-                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[0]['sortedUp'] == '0')">north
+                        <mat-icon (click)="sortBy('fish')" class="sort-arrow" [class.d-none]="(sortingBy[0]['sortedUp'] == '0')">south
                         </mat-icon>
-                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[0]['sortedDown'] == '0')">south
+                        <mat-icon (click)="sortBy('fish')" class="sort-arrow" [class.d-none]="(sortingBy[0]['sortedDown'] == '0')">north
                         </mat-icon>
                     </div>
                 </div>
             </th>
             <th>
-                <div class="sorting-wrap" (click)="sortBy('length')">
-                    <span>Length</span>
+                <div class="sorting-wrap">
+                    <span (click)="sortBy('length')">Length</span>
                     <div class="icon-wrap">
-                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[1]['sortedUp'] == '0')">north
+                        <mat-icon (click)="sortBy('length')" class="sort-arrow" [class.d-none]="(sortingBy[1]['sortedUp'] == '0')">south
                         </mat-icon>
-                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[1]['sortedDown'] == '0')">south
+                        <mat-icon (click)="sortBy('length')" class="sort-arrow" [class.d-none]="(sortingBy[1]['sortedDown'] == '0')">north
                         </mat-icon>
                     </div>
                 </div>
             </th>
             <th>
-                <div class="sorting-wrap" (click)="sortBy('place')">
-                    <span>Place</span>
+                <div class="sorting-wrap">
+                    <span (click)="sortBy('place')">Place</span>
                     <div class="icon-wrap">
-                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[2]['sortedUp'] == '0')">north
+                        <mat-icon (click)="sortBy('place')" class="sort-arrow" [class.d-none]="(sortingBy[2]['sortedUp'] == '0')">south
                         </mat-icon>
-                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[2]['sortedDown'] == '0')">south
+                        <mat-icon (click)="sortBy('place')" class="sort-arrow" [class.d-none]="(sortingBy[2]['sortedDown'] == '0')">north
                         </mat-icon>
                     </div>
                 </div>
             </th>
             <th>
-                <div class="sorting-wrap" (click)="sortBy('date')">
-                    <span>Date</span>
+                <div class="sorting-wrap">
+                    <span (click)="sortBy('date')">Date</span>
                     <div class="icon-wrap">
-                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[3]['sortedUp'] =='0' )">north
+                        <mat-icon (click)="sortBy('date')" class="sort-arrow" [class.d-none]="(sortingBy[3]['sortedUp'] =='0' )">south
                         </mat-icon>
-                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[3]['sortedDown'] == '0' )">south
+                        <mat-icon (click)="sortBy('date')" class="sort-arrow" [class.d-none]="(sortingBy[3]['sortedDown'] == '0' )">north
                         </mat-icon>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Fish } from 'src/models/fish.class';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-journal',
@@ -13,7 +14,6 @@ export class JournalComponent implements OnInit {
   allFishes = [];
   date: Date;
   renderArray = [];
-
 
   sortingBy = [
     {
@@ -52,7 +52,6 @@ export class JournalComponent implements OnInit {
         this.allFishes = changes;
         this.renderArray = this.allFishes;
       });
-
   }
 
 
@@ -65,7 +64,7 @@ export class JournalComponent implements OnInit {
 
 
   sorting(name, i, element) {
-    if (name == element && this.sortingBy[i]['sortedUp'] == '0' && this.sortingBy[i]['sortedDown'] == '0')  this.sortingDown(i)
+    if (name == element && this.sortingBy[i]['sortedUp'] == '0' && this.sortingBy[i]['sortedDown'] == '0') this.sortingDown(i)
     else if (name == element && this.sortingBy[i]['sortedUp'] == '1') this.sortingUp(i)
     else if (name == element && this.sortingBy[i]['sortedDown'] == '1') this.sortingDefault()
   }
@@ -98,5 +97,5 @@ export class JournalComponent implements OnInit {
     }
   }
 
-  
+
 }

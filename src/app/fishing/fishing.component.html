@@ -1,1 +1,32 @@
-<p>fishing works!</p>
+<mat-card class="user-deatail-header">
+    <button mat-icon-button [matMenuTriggerFor]="menu1" class="pin-right-upper-corner">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu1="matMenu">
+        <button (click)="editUserDetail()" mat-menu-item>Edit</button>
+    </mat-menu>
+    <img src="assets/img/profile.jpg">
+    <div class="user-details">
+        <h2> {{fish.fish}}</h2>
+        {{fish.length}}
+    </div>
+</mat-card>
+
+<mat-card class="mt-32">
+    <button mat-icon-button [matMenuTriggerFor]="menu2" class="pin-right-upper-corner">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu2="matMenu">
+        <button (click)="editUserAddress()" mat-menu-item>Edit</button>
+    </mat-menu>
+
+    <mat-card-title>
+        Address
+    </mat-card-title>
+    <mat-card-content>
+Gewicht
+    </mat-card-content>
+
+</mat-card>

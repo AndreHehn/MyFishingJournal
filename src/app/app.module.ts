@@ -20,7 +20,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatCardModule} from '@angular/material/card'; 
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { JournalComponent } from './journal/journal.component';
 import { AddCatchComponent } from './add-catch/add-catch.component';
@@ -51,6 +52,7 @@ import { AnalysisComponent } from './analysis/analysis.component';
     MatDialogModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    MatMenuModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

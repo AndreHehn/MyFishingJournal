@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { Fish } from 'src/models/fish.class';
 
 @Component({
   selector: 'app-fishing',
@@ -7,9 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FishingComponent implements OnInit {
 
-  constructor() { }
+  catchId = '';
+  fish : Fish = new Fish();
 
-  ngOnInit(): void {
+  constructor(public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private firestore: AngularFirestore) {
   }
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(paramMap => {
+      this.catchId = paramMap.get('id');
+      this.getFish();
+    })
+  }
+  getFish() {
+    this.firestore
+      .collection('fishes')
+      .doc(this.catchId)
+      .valueChanges()
+      .subscribe((fish: any) => {
+        this.fish = new Fish(fish);
+      })
+  }
+
+
+  editUserDetail() {
+   /* const dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = new User(this.user.toJson());
+    dialog.componentInstance.userId = this.userId;
+  */}
+
+
+  editUserAddress() {
+   /* const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = new User(this.user.toJson());
+    dialog.componentInstance.userId = this.userId;
+  */}
 }
