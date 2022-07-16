@@ -29,9 +29,30 @@
         }
 
         th {
-            span {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 500;
+            font-size: 14px;
+            text-align: start;
+
+            .sorting-wrap {
+
+                display: flex;
+                align-items: center;
                 cursor: pointer;
-                &:hover{color: #fff; }
+
+                .sort-arrow {
+                    font-size: 14px;
+                    height: 14px;
+                    width: 14px;
+                }
+
+                span {
+                    margin-right: 0px;
+                }
+
+                &:hover {
+                    color: #fff;
+                }
             }
 
             &:first-child {
@@ -45,12 +66,12 @@
         }
     }
 
-
-
-    th {
-        color: rgba(255, 255, 255, 0.4);
-        font-weight: 500;
-        font-size: 14px;
-        text-align: start;
+    .icon-wrap {
+        display: flex;
+        align-items:center;
+        width: 14px;
+        height: 20px;
+        padding-bottom:3px;
     }
+
 }

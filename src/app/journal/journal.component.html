@@ -1,12 +1,52 @@
 <mat-card>
     <table class="user-table">
         <tr>
-            <th><span>Fish</span><div id="fish-arrow" class="sort-arrow"></div></th>
-            <th><span>Length</span><div id="length-arrow" class="sort-arrow"></div></th>
-            <th><span>Place</span><div id="place-arrow" class="sort-arrow"></div></th>
-            <th><span>Date</span><div id="date-arrow" class="sort-arrow"></div></th>
+            <th>
+                <div class="sorting-wrap" (click)="sortBy('fish')">
+                    <span>Fish</span>
+                    <div class="icon-wrap">
+                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[0]['sortedUp'] == '0')">north
+                        </mat-icon>
+                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[0]['sortedDown'] == '0')">south
+                        </mat-icon>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="sorting-wrap" (click)="sortBy('length')">
+                    <span>Length</span>
+                    <div class="icon-wrap">
+                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[1]['sortedUp'] == '0')">north
+                        </mat-icon>
+                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[1]['sortedDown'] == '0')">south
+                        </mat-icon>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="sorting-wrap" (click)="sortBy('place')">
+                    <span>Place</span>
+                    <div class="icon-wrap">
+                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[2]['sortedUp'] == '0')">north
+                        </mat-icon>
+                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[2]['sortedDown'] == '0')">south
+                        </mat-icon>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="sorting-wrap" (click)="sortBy('date')">
+                    <span>Date</span>
+                    <div class="icon-wrap">
+                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[3]['sortedUp'] =='0' )">north
+                        </mat-icon>
+                        <mat-icon class="sort-arrow" [class.d-none]="(sortingBy[3]['sortedDown'] == '0' )">south
+                        </mat-icon>
+                    </div>
+                </div>
+            </th>
         </tr>
-        <tr *ngFor="let fish of allFishes" [routerLink]="['/journal/' + fish.customId]" >
+        <tr *ngFor="let fish of renderArray" [routerLink]="['/journal/' + fish.customId]">
             <td>{{fish.fish}}</td>
             <td>{{fish.length}}</td>
             <td>{{fish.place}}</td>
