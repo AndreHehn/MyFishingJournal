@@ -1,9 +1,11 @@
 .mat-drawer-container {
     height: 100vh;
 }
-.headline{
+
+.headline {
     margin-left: 16px;
 }
+
 .sidenav {
     width: 200px;
 
@@ -62,4 +64,21 @@ mat-toolbar-row {
     padding-left: 56px;
     padding-right: 56px;
     padding-top: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
+
 }

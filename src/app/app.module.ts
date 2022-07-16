@@ -28,6 +28,9 @@ import { AddCatchComponent } from './add-catch/add-catch.component';
 import { FishingComponent } from './fishing/fishing.component';
 import { NotesComponent } from './notes/notes.component';
 import { AnalysisComponent } from './analysis/analysis.component';
+import { SettingsComponent } from './settings/settings.component';
+import { LegalComponent } from './legal/legal.component';
+import { DataprotectComponent } from './dataprotect/dataprotect.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { AnalysisComponent } from './analysis/analysis.component';
     AddCatchComponent,
     FishingComponent,
     NotesComponent,
-    AnalysisComponent
+    AnalysisComponent,
+    SettingsComponent,
+    LegalComponent,
+    DataprotectComponent
   ],
   imports: [
 

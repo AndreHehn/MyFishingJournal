@@ -36,14 +36,14 @@ export class FishingComponent implements OnInit {
   }
 
 
-  editUserDetail() {
+  editCatchMain() {
    /* const dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user.toJson());
     dialog.componentInstance.userId = this.userId;
   */}
 
 
-  editUserAddress() {
+  editCatchMore() {
    /* const dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJson());
     dialog.componentInstance.userId = this.userId;

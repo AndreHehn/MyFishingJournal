@@ -4,9 +4,9 @@
     </button>
 
     <mat-menu #menu1="matMenu">
-        <button (click)="editUserDetail()" mat-menu-item>Edit</button>
+        <button (click)="editCatchMain()" mat-menu-item>Edit</button>
     </mat-menu>
-    <img src="assets/img/profile.jpg">
+    <img src="assets/img/logo.png">
     <div class="user-details">
         <h2> {{fish.fish}}</h2>
         {{fish.length}}
@@ -19,7 +19,7 @@
     </button>
 
     <mat-menu #menu2="matMenu">
-        <button (click)="editUserAddress()" mat-menu-item>Edit</button>
+        <button (click)="editCatchMore()" mat-menu-item>Edit</button>
     </mat-menu>
 
     <mat-card-title>
