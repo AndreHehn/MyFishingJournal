@@ -5,10 +5,12 @@ export class Fish {
     weight: string = '';
     place: string = '';
     method: string = '';
+    comment: string ='';
     weather: string = '';
     temperature: string = '';
     time: number;
     date: number;
+ 
 
 
     constructor(obj?: any) {
@@ -16,6 +18,7 @@ export class Fish {
         this.length = obj ? obj.length : '';
         this.weight = obj ? obj.weight : '';
         this.method = obj ? obj.street : '';
+        this.comment =obj ? obj.comment : '';
         this.place = obj ? obj.place : '';
         this.weather = obj ? obj.weather : '';
         this.temperature = obj ? obj.temperature : '';
@@ -28,6 +31,7 @@ export class Fish {
             length: this.length,
             weight: this.weight,
             method: this.method,
+            comment: this.comment,
             place: this.place,
             weather: this.weather,
             temperature: this.temperature,

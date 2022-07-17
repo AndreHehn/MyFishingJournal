@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 
 @Component({
@@ -8,6 +8,8 @@ import { Router, NavigationStart } from '@angular/router';
 })
 export class AppComponent {
   title: string;
+  @Input() showSearch = false;
+  @Input() searchValue = '';
 
   constructor(private router: Router){}
   public ngOnInit() {
@@ -28,7 +30,17 @@ export class AppComponent {
         if ( events.url === '/notes') {
           this.title = "Notes";
         } 
+        if ( events.url === '/settings') {
+          this.title = "Settings";
+        } 
+        if ( events.url === '/legal') {
+          this.title = "Legal Notice";
+        } 
+        if ( events.url === '/dataprotection') {
+          this.title = "Data Protection";
+        } 
     
+
 
 
       }

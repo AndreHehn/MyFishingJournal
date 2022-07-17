@@ -4,7 +4,7 @@
         routerLinkActive="router-link-active">
     </div>
     <ul>
-      <li></li>
+      <li class="no-cursor"></li>
       <li routerLink="/journal" routerLinkActive="router-link-active">
         <mat-icon>set_meal</mat-icon>Journal
       </li>
@@ -17,12 +17,12 @@
       <li routerLink="/notes" routerLinkActive="router-link-active">
         <mat-icon>description</mat-icon>Notes
       </li>
-      <li></li>
-      <li></li>
+      <li class="no-cursor"></li>
+      <li class="no-cursor"></li>
       <li routerLink="/settings" routerLinkActive="router-link-active">
         <mat-icon>settings</mat-icon>Settings
       </li>
-      <li></li>
+      <li class="no-cursor"></li>
       <li routerLink="/legal" routerLinkActive="router-link-active">
         <mat-icon>policy</mat-icon>Legal notice
       </li>
@@ -35,11 +35,18 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row class="header">
         <div class="header-left">
-          <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+          <mat-icon class="menu-bar" (click)="drawer.toggle()">menu</mat-icon>
           <span class="headline">{{title}}</span>
         </div>
+        <div class="form-wrap" [ngStyle]="{'display': showSearch ? 'block' : 'none'}">
+          <mat-form-field appearance="standard">
+            <mat-label>Which fish are you looking for?</mat-label>
+            <input matInput [(ngModel)]="searchValue">
+          </mat-form-field>
+        </div>
         <div class="header-right">
-          <mat-icon>search</mat-icon>
+        
+          <mat-icon class="search-icon"  routerLink="/journal" routerLinkActive="router-link-active" (click)="showSearch = !showSearch">search</mat-icon>
         </div>
       </mat-toolbar-row>
     </mat-toolbar>

@@ -6,6 +6,10 @@
     margin-left: 16px;
 }
 
+.menu-bar{
+    cursor: pointer;
+}
+
 .sidenav {
     width: 200px;
 
@@ -36,6 +40,10 @@
             }
         }
     }
+}
+.no-cursor{
+    cursor: unset !important;
+    &:hover{background-color: #424242 !important;}
 }
 
 .logo-container {
@@ -81,4 +89,18 @@ mat-toolbar-row {
         align-items: center;
     }
 
+}
+
+.search-icon {
+    cursor: pointer;
+}
+
+.form-wrap {
+    width:100%;
+    max-width: 192px;
+}
+
+mat-form-field.mat-form-field {
+    font-size: 14px;
+    width:100%;
 }
