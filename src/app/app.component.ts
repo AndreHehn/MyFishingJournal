@@ -8,38 +8,36 @@ import { Router, NavigationStart } from '@angular/router';
 })
 export class AppComponent {
   title: string;
-  @Input() showSearch = false;
-  @Input() searchValue = '';
-
-  constructor(private router: Router){}
+  showSearch = false;
+  constructor(private router: Router) { }
   public ngOnInit() {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationStart) {
         if (events.url === '/' || events.url === '/journal') {
           this.title = "My fishing journal";
-        } 
-        if ( events.url === '/addcatch') {
+        }
+        if (events.url === '/addcatch') {
           this.title = "Add new catch";
-        } 
-        if ( events.url === '/journal/:id') {
+        }
+        if (events.url === '/journal/:id') {
           this.title = "Details of catch";
-        } 
-        if ( events.url === '/analysis') {
+        }
+        if (events.url === '/analysis') {
           this.title = "Analysis of all catches";
-        } 
-        if ( events.url === '/notes') {
+        }
+        if (events.url === '/notes') {
           this.title = "Notes";
-        } 
-        if ( events.url === '/settings') {
+        }
+        if (events.url === '/settings') {
           this.title = "Settings";
-        } 
-        if ( events.url === '/legal') {
+        }
+        if (events.url === '/legal') {
           this.title = "Legal Notice";
-        } 
-        if ( events.url === '/dataprotection') {
+        }
+        if (events.url === '/dataprotection') {
           this.title = "Data Protection";
-        } 
-    
+        }
+
 
 
 

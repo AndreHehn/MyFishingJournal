@@ -80,3 +80,24 @@
 .paginator{
     width:100%;
 }
+
+.search-icon {
+    cursor: pointer;
+    position: absolute;
+    top:calc((58px - 24px ) / 2);
+    right:calc((58px - 24px ) / 2);
+}
+
+.form-wrap {
+    width:100%;
+    max-width: 192px;
+    position: absolute;
+    top:-6px;
+    right:calc(((58px - 24px ) / 2) + 16px + 24px);
+
+}
+
+mat-form-field.mat-form-field {
+    font-size: 14px;
+    width:100%;
+}

@@ -33,6 +33,10 @@ import { AnalysisComponent } from './analysis/analysis.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LegalComponent } from './legal/legal.component';
 import { DataprotectComponent } from './dataprotect/dataprotect.component';
+import { DialogDeleteEntryComponent } from './dialog-delete-entry/dialog-delete-entry.component';
+import { DialogEditEntryComponent } from './dialog-edit-entry/dialog-edit-entry.component';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +48,9 @@ import { DataprotectComponent } from './dataprotect/dataprotect.component';
     AnalysisComponent,
     SettingsComponent,
     LegalComponent,
-    DataprotectComponent
+    DataprotectComponent,
+    DialogDeleteEntryComponent,
+    DialogEditEntryComponent
   ],
   imports: [
 

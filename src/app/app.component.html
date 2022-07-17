@@ -38,16 +38,6 @@
           <mat-icon class="menu-bar" (click)="drawer.toggle()">menu</mat-icon>
           <span class="headline">{{title}}</span>
         </div>
-        <div class="form-wrap" [ngStyle]="{'display': showSearch ? 'block' : 'none'}">
-          <mat-form-field appearance="standard">
-            <mat-label>Which fish are you looking for?</mat-label>
-            <input matInput [(ngModel)]="searchValue">
-          </mat-form-field>
-        </div>
-        <div class="header-right">
-        
-          <mat-icon class="search-icon"  routerLink="/journal" routerLinkActive="router-link-active" (click)="showSearch = !showSearch">search</mat-icon>
-        </div>
       </mat-toolbar-row>
     </mat-toolbar>
     <div class="router-container">

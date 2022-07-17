@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Fish } from 'src/models/fish.class';
+import { DialogDeleteEntryComponent } from '../dialog-delete-entry/dialog-delete-entry.component';
+import { DialogEditEntryComponent } from '../dialog-edit-entry/dialog-edit-entry.component';
 
 @Component({
   selector: 'app-fishing',
@@ -36,16 +38,16 @@ export class FishingComponent implements OnInit {
   }
 
 
-  editCatchMain() {
-   /* const dialog = this.dialog.open(DialogEditUserComponent);
-    dialog.componentInstance.user = new User(this.user.toJson());
-    dialog.componentInstance.userId = this.userId;
-  */}
+  editEntry() {
+    const dialog = this.dialog.open(DialogEditEntryComponent);
+    dialog.componentInstance.fish = new Fish(this.fish.toJson());
+    dialog.componentInstance.catchId = this.catchId;
+  }
 
 
-  editCatchMore() {
-   /* const dialog = this.dialog.open(DialogEditAddressComponent);
-    dialog.componentInstance.user = new User(this.user.toJson());
-    dialog.componentInstance.userId = this.userId;
-  */}
+  deleteEntry() {
+    const dialog = this.dialog.open(DialogDeleteEntryComponent);
+    dialog.componentInstance.fish = new Fish(this.fish.toJson());
+    dialog.componentInstance.catchId = this.catchId;
+  }
 }

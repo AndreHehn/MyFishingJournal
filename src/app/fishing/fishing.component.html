@@ -4,7 +4,8 @@
     </button>
 
     <mat-menu #menu1="matMenu">
-        <button (click)="editCatchMain()" mat-menu-item>Edit</button>
+        <button (click)="editEntry()" mat-menu-item>Edit</button>
+        <button (click)="deleteEntry()" mat-menu-item>Delete</button>
     </mat-menu>
     <img src="assets/img/logo.png">
     <div class="user-details">
@@ -14,19 +15,17 @@
 </mat-card>
 
 <mat-card class="mt-32">
-    <button mat-icon-button [matMenuTriggerFor]="menu2" class="pin-right-upper-corner">
-        <mat-icon>more_vert</mat-icon>
-    </button>
-
-    <mat-menu #menu2="matMenu">
-        <button (click)="editCatchMore()" mat-menu-item>Edit</button>
-    </mat-menu>
-
     <mat-card-title>
-        Address
+        Details:
     </mat-card-title>
     <mat-card-content>
-Gewicht
+        <span>Weight: {{ fish.weight }}</span><br>
+        <span>Caught near: {{ fish.place }}</span><br>
+        <span> With this method: {{fish.method}}</span><br>
+        <span>The Weather was: {{ fish.weather }}</span><br>
+        <span>With a temperature of {{ fish.temperature }}°C</span><br>
+        <span>Caught at {{ fish.time }} on {{ fish.date | date}}</span><br>
+        <span> Comment: {{ fish.comment }}</span>
     </mat-card-content>
 
 </mat-card>
