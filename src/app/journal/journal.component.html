@@ -1,13 +1,15 @@
 <mat-card>
-    <table class="user-table">
+    <table class="table">
         <tr>
             <th>
                 <div class="sorting-wrap">
                     <span (click)="sortBy('fish')">Fish</span>
                     <div class="icon-wrap">
-                        <mat-icon (click)="sortBy('fish')" class="sort-arrow" [class.d-none]="(sortingBy[0]['sortedUp'] == '0')">south
+                        <mat-icon (click)="sortBy('fish')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[0]['sortedUp'] == '0')">south
                         </mat-icon>
-                        <mat-icon (click)="sortBy('fish')" class="sort-arrow" [class.d-none]="(sortingBy[0]['sortedDown'] == '0')">north
+                        <mat-icon (click)="sortBy('fish')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[0]['sortedDown'] == '0')">north
                         </mat-icon>
                     </div>
                 </div>
@@ -16,9 +18,11 @@
                 <div class="sorting-wrap">
                     <span (click)="sortBy('length')">Length</span>
                     <div class="icon-wrap">
-                        <mat-icon (click)="sortBy('length')" class="sort-arrow" [class.d-none]="(sortingBy[1]['sortedUp'] == '0')">south
+                        <mat-icon (click)="sortBy('length')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[1]['sortedUp'] == '0')">south
                         </mat-icon>
-                        <mat-icon (click)="sortBy('length')" class="sort-arrow" [class.d-none]="(sortingBy[1]['sortedDown'] == '0')">north
+                        <mat-icon (click)="sortBy('length')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[1]['sortedDown'] == '0')">north
                         </mat-icon>
                     </div>
                 </div>
@@ -27,9 +31,11 @@
                 <div class="sorting-wrap">
                     <span (click)="sortBy('place')">Place</span>
                     <div class="icon-wrap">
-                        <mat-icon (click)="sortBy('place')" class="sort-arrow" [class.d-none]="(sortingBy[2]['sortedUp'] == '0')">south
+                        <mat-icon (click)="sortBy('place')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[2]['sortedUp'] == '0')">south
                         </mat-icon>
-                        <mat-icon (click)="sortBy('place')" class="sort-arrow" [class.d-none]="(sortingBy[2]['sortedDown'] == '0')">north
+                        <mat-icon (click)="sortBy('place')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[2]['sortedDown'] == '0')">north
                         </mat-icon>
                     </div>
                 </div>
@@ -38,19 +44,24 @@
                 <div class="sorting-wrap">
                     <span (click)="sortBy('date')">Date</span>
                     <div class="icon-wrap">
-                        <mat-icon (click)="sortBy('date')" class="sort-arrow" [class.d-none]="(sortingBy[3]['sortedUp'] =='0' )">south
+                        <mat-icon (click)="sortBy('date')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[3]['sortedUp'] =='0' )">south
                         </mat-icon>
-                        <mat-icon (click)="sortBy('date')" class="sort-arrow" [class.d-none]="(sortingBy[3]['sortedDown'] == '0' )">north
+                        <mat-icon (click)="sortBy('date')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[3]['sortedDown'] == '0' )">north
                         </mat-icon>
                     </div>
                 </div>
             </th>
         </tr>
-        <tr *ngFor="let fish of renderArray" [routerLink]="['/journal/' + fish.customId]">
+        <tr *ngFor="let fish of slicedArray" [routerLink]="['/journal/' + fish.customId]" aria-label="labelForPaginator">
             <td>{{fish.fish}}</td>
             <td>{{fish.length}}</td>
             <td>{{fish.place}}</td>
             <td>{{fish.date * 1000 | date}}</td>
         </tr>
     </table>
+
+    <mat-paginator class="paginator" [length]="renderArray.length" [pageSize]="10" [pageSizeOptions]="[1, 5, 10, 25, 100]" (page)="OnPageChange($event)">
+    </mat-paginator>
 </mat-card>

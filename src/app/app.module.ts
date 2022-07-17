@@ -22,6 +22,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatPaginatorModule} from '@angular/material/paginator'; 
+
 import { FormsModule } from '@angular/forms';
 import { JournalComponent } from './journal/journal.component';
 import { AddCatchComponent } from './add-catch/add-catch.component';
@@ -58,6 +60,7 @@ import { DataprotectComponent } from './dataprotect/dataprotect.component';
     MatDialogModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    MatPaginatorModule,
     MatMenuModule,
     BrowserModule,
     AppRoutingModule,

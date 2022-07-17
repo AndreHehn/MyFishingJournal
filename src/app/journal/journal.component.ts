@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { PageEvent } from '@angular/material/paginator';
 import { Fish } from 'src/models/fish.class';
-import { AppComponent } from '../app.component';
+
 
 @Component({
   selector: 'app-journal',
@@ -13,7 +14,10 @@ export class JournalComponent implements OnInit {
   fish: Fish;
   allFishes = [];
   date: Date;
+  startIndex = 0;
+  endIndex = 10;
   renderArray = [];
+  slicedArray = [];
 
   sortingBy = [
     {
@@ -51,6 +55,7 @@ export class JournalComponent implements OnInit {
       .subscribe((changes: any) => {
         this.allFishes = changes;
         this.renderArray = this.allFishes;
+        this.slicedArray = this.renderArray;
       });
   }
 
@@ -67,6 +72,7 @@ export class JournalComponent implements OnInit {
     if (name == element && this.sortingBy[i]['sortedUp'] == '0' && this.sortingBy[i]['sortedDown'] == '0') this.sortingDown(i)
     else if (name == element && this.sortingBy[i]['sortedUp'] == '1') this.sortingUp(i)
     else if (name == element && this.sortingBy[i]['sortedDown'] == '1') this.sortingDefault()
+    this.slicedArray = this.renderArray.slice(this.startIndex, this.endIndex);
   }
 
 
@@ -98,4 +104,12 @@ export class JournalComponent implements OnInit {
   }
 
 
+  OnPageChange(event: PageEvent) {
+    this.startIndex = event.pageIndex * event.pageSize;
+    this.endIndex = this.startIndex + event.pageSize;
+    if (this.endIndex > this.renderArray.length) {
+      this.endIndex = this.renderArray.length;
+    }
+    this.slicedArray = this.renderArray.slice(this.startIndex, this.endIndex);
+  }
 }
