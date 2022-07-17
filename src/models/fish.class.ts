@@ -1,14 +1,13 @@
 export class Fish {
 
     fish: string = '';
-    length: string = '';
-    weight: string = '';
+    length: number;
+    weight: number;
     place: string = '';
     method: string = '';
     comment: string ='';
     weather: string = '';
     temperature: string = '';
-    time: number;
     date: number;
  
 
@@ -22,20 +21,18 @@ export class Fish {
         this.place = obj ? obj.place : '';
         this.weather = obj ? obj.weather : '';
         this.temperature = obj ? obj.temperature : '';
-        this.time = obj ? obj.time : '';
         this.date = obj ? obj.date : '';
     }
     public toJson() {
         return {
-            fish: this.fish,
+            fish: this.fish.toLowerCase(),
             length: this.length,
             weight: this.weight,
             method: this.method,
             comment: this.comment,
-            place: this.place,
+            place: this.place.toLowerCase(),
             weather: this.weather,
             temperature: this.temperature,
-            time: this.time,
             date: this.date
         }
     }

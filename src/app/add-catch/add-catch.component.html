@@ -1,28 +1,26 @@
 <div class="dialog-container">
     <div mat-dialog-content>
-        <div>
-            <mat-form-field appearance="outline" color="accent" class="mr-16">
-                <mat-label>What kind of Fish have you caught?</mat-label>
+        <div> <span>What kind of Fish have you caught?</span><br>
+            <mat-form-field appearance="standard" color="accent" class="mr-16">
                 <input [disabled]="loading" [(ngModel)]="fish.fish" matInput placeholder="fish">
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="outline" color="accent" class="full-width">
-                <mat-label>What is the lenght of the fish?</mat-label>
+            <span>What is the lenght of the fish?</span><br>
+            <mat-form-field appearance="standard" color="accent" class="full-width">
                 <input [disabled]="loading" [(ngModel)]="fish.length" matInput placeholder="Length">
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="outline" color="accent" class="full-width">
-                <mat-label>When have you caught this fish?</mat-label>
-                <input placeholder="MM/DD/YYYY" [disabled]="loading" [(ngModel)]="date" matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+            <span>When have you caught this fish?</span><br>
+            <mat-form-field appearance="standard" color="accent" class="full-width">
+                <input [disabled]="loading" [(ngModel)]="date" matInput class ="date" type="datetime-local">
             </mat-form-field>
         </div>
+
         <div>
-            <mat-form-field appearance="outline" color="accent" class="full-width">
-                <mat-label>Where have you caught the fish?</mat-label>
+            <span>Where have you caught the fish?</span><br>
+            <mat-form-field appearance="standard" color="accent" class="full-width">
                 <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
             </mat-form-field>
         </div>

@@ -14,19 +14,30 @@ import { DialogEditEntryComponent } from '../dialog-edit-entry/dialog-edit-entry
 export class FishingComponent implements OnInit {
 
   catchId = '';
-  fish : Fish = new Fish();
+  fish: Fish = new Fish();
+  reloadCount: number = 0;
 
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
     private firestore: AngularFirestore) {
+
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       this.catchId = paramMap.get('id');
       this.getFish();
-    })
+    });
+    // to show title:
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
   }
+
+
   getFish() {
     this.firestore
       .collection('fishes')

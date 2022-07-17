@@ -7,7 +7,7 @@ import { Router, NavigationStart } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title: string;
+  title: string = 'Details of catch';
   showSearch = false;
   constructor(private router: Router) { }
   public ngOnInit() {
@@ -18,9 +18,6 @@ export class AppComponent {
         }
         if (events.url === '/addcatch') {
           this.title = "Add new catch";
-        }
-        if (events.url === '/journal/:id') {
-          this.title = "Details of catch";
         }
         if (events.url === '/analysis') {
           this.title = "Analysis of all catches";

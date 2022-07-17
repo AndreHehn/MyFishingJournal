@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { DocumentReference } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Fish } from 'src/models/fish.class';
 
@@ -21,17 +22,18 @@ export class AddCatchComponent implements OnInit {
 
 
   saveUser() {
-    this.fish.date = this.date.getTime();
+    this.fish.date = Number(new Date(this.date));
     this.loading = true;
     this.firestore
       .collection('fishes')
       .add(this.fish.toJson())
-      .then(() => {
+      .then((ref) => {
         this.loading = false;
-        this.router.navigate(['/journal'])
+        let myID = ref.id;
+        this.router.navigate(['/details/' + myID]);
       });
   }
 
-  cancelAdd(){}
+  cancelAdd() { }
 
 }

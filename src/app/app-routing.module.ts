@@ -12,7 +12,7 @@ import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   { path: '', title: 'My fishing journal', component: JournalComponent },
   { path: 'journal', title: 'My fishing journal', component: JournalComponent },
-  { path: 'journal/:id', title: 'Details of catch', component: FishingComponent },
+  { path: 'details/:id', title: 'Details of catch', component: FishingComponent },
   { path: 'addcatch', title: 'Add new catch', component: AddCatchComponent },
   { path: 'notes', title: 'Notes', component: NotesComponent },
   { path: 'analysis', title: 'Analysis', component: AnalysisComponent },

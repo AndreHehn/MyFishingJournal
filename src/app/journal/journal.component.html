@@ -11,6 +11,9 @@
                         <mat-icon (click)="sortBy('fish')" class="sort-arrow"
                             [class.d-none]="(sortingBy[0]['sortedDown'] == '0')">north
                         </mat-icon>
+                        <mat-icon (click)="sortBy('fish')" class="sort-arrow"
+                        [class.d-none]="(sortingBy[0]['sortedDown'] == '1' || sortingBy[0]['sortedUp'] =='1' )">unfold_more
+                    </mat-icon>
                     </div>
                 </div>
             </th>
@@ -23,6 +26,10 @@
                         </mat-icon>
                         <mat-icon (click)="sortBy('length')" class="sort-arrow"
                             [class.d-none]="(sortingBy[1]['sortedDown'] == '0')">north
+                        </mat-icon>
+                        <mat-icon (click)="sortBy('length')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[1]['sortedDown'] == '1' || sortingBy[1]['sortedUp'] =='1' )">
+                            unfold_more
                         </mat-icon>
                     </div>
                 </div>
@@ -37,6 +44,10 @@
                         <mat-icon (click)="sortBy('place')" class="sort-arrow"
                             [class.d-none]="(sortingBy[2]['sortedDown'] == '0')">north
                         </mat-icon>
+                        <mat-icon (click)="sortBy('place')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[2]['sortedDown'] == '1' || sortingBy[2]['sortedUp'] =='1' )">
+                            unfold_more
+                        </mat-icon>
                     </div>
                 </div>
             </th>
@@ -50,20 +61,24 @@
                         <mat-icon (click)="sortBy('date')" class="sort-arrow"
                             [class.d-none]="(sortingBy[3]['sortedDown'] == '0' )">north
                         </mat-icon>
+                        <mat-icon (click)="sortBy('date')" class="sort-arrow"
+                            [class.d-none]="(sortingBy[3]['sortedDown'] == '1' || sortingBy[3]['sortedUp'] =='1' )">
+                            unfold_more
+                        </mat-icon>
                     </div>
                 </div>
             </th>
         </tr>
-        <tr *ngFor="let fish of slicedArray" [routerLink]="['/journal/' + fish.customId]">
-            <td>{{fish.fish}}</td>
+        <tr *ngFor="let fish of slicedArray" [routerLink]="['/details/' + fish.customId]">
+            <td>{{fish.fish | titlecase}}</td>
             <td>{{fish.length}} cm</td>
-            <td>{{fish.place}}</td>
+            <td>{{fish.place | titlecase}}</td>
             <td>{{fish.date | date}}</td>
         </tr>
     </table>
 
-    <mat-paginator class="paginator" [length]="renderArray.length" [pageSize]="10"
-        [pageSizeOptions]="[1, 5, 10, 25, 100]" (page)="OnPageChange($event)">
+    <mat-paginator class="paginator" [length]="renderArray.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]"
+        (page)="OnPageChange($event)">
     </mat-paginator>
 </mat-card>
 
