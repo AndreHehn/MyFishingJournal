@@ -1,19 +1,19 @@
 <div class="dialog-container">
     <div mat-dialog-content>
         <div>
-            <mat-form-field appearance="outline" class="mr-16">
+            <mat-form-field appearance="outline" color="accent" class="mr-16">
                 <mat-label>What kind of Fish have you caught?</mat-label>
                 <input [disabled]="loading" [(ngModel)]="fish.fish" matInput placeholder="fish">
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="outline" class="full-width">
+            <mat-form-field appearance="outline" color="accent" class="full-width">
                 <mat-label>What is the lenght of the fish?</mat-label>
-                <input [disabled]="loading" [(ngModel)]="fish.length" matInput placeholder="Email">
+                <input [disabled]="loading" [(ngModel)]="fish.length" matInput placeholder="Length">
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="outline" class="full-width">
+            <mat-form-field appearance="outline" color="accent" class="full-width">
                 <mat-label>When have you caught this fish?</mat-label>
                 <input placeholder="MM/DD/YYYY" [disabled]="loading" [(ngModel)]="date" matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -21,9 +21,9 @@
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="outline" class="full-width">
+            <mat-form-field appearance="outline" color="accent" class="full-width">
                 <mat-label>Where have you caught the fish?</mat-label>
-                <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Street & house no.">
+                <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
             </mat-form-field>
         </div>
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { PageEvent } from '@angular/material/paginator';
+import { filter } from 'rxjs';
 import { Fish } from 'src/models/fish.class';
 
 
@@ -58,14 +59,16 @@ export class JournalComponent implements OnInit {
 
 
   ifChecksForNgOnInit() {
+    let filteredArray = [];
     if (this.searchValue.length == 0) this.renderArray = this.allFishes;
     if (this.searchValue.length > 0) {
       for (let i = 0; i < this.allFishes.length; i++) {
-        if (this.allFishes[i]['fish'].toLowerCase().includes(this.searchValue.toLowerCase())) {
-          this.renderArray = [];
-          this.renderArray.push(this.allFishes[i]);
+        if (this.allFishes[i]['fish'].toLowerCase().includes(this.searchValue.toLowerCase()) ||
+          this.allFishes[i]['place'].toLowerCase().includes(this.searchValue.toLowerCase())) {
+          filteredArray.push(this.allFishes[i]);
         }
       }
+      this.renderArray = filteredArray;
     }
   }
 
@@ -89,7 +92,7 @@ export class JournalComponent implements OnInit {
   sortingDown(i, name) {
     this.unsetListDirection();
     this.sortingBy[i]['sortedUp'] = '1';
-    if (name == 'fish')  this.renderArray.sort((a, b) => (a.fish > b.fish) ? 1 : -1)
+    if (name == 'fish') this.renderArray.sort((a, b) => (a.fish > b.fish) ? 1 : -1)
     if (name == 'length') this.renderArray.sort((a, b) => (a.length > b.length) ? 1 : -1)
     if (name == 'place') this.renderArray.sort((a, b) => (a.place > b.place) ? 1 : -1)
     if (name == 'date') this.renderArray.sort((a, b) => (a.date > b.date) ? 1 : -1)
