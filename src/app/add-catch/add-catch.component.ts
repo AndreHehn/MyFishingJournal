@@ -36,11 +36,6 @@ export class AddCatchComponent implements OnInit {
       });
   }
 
-  
-  pushClass() {
-    this.valueChanged = true;
-  }
-
 
   cancelAdd() {
     this.router.navigate(['/journal']);

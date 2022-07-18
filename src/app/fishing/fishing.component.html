@@ -7,7 +7,7 @@
         <button (click)="editEntry()" mat-menu-item>Edit</button>
         <button (click)="deleteEntry()" mat-menu-item>Delete</button>
     </mat-menu>
-    <img src="assets/img/logo.png">
+    <img (click)="bigPicture()" src="{{ imagePath }}">
     <div class="user-details">
         <h2> {{fish.fish | titlecase}}</h2>
         {{fish.length}} cm
@@ -23,7 +23,7 @@
         <span>Caught near: {{ fish.place | titlecase }}</span><br><br>
         <span> With this method: {{ fish.method }}</span><br><br>
         <span>The weather was {{ fish.weather }} with a temperature of {{ fish.temperature }}°C</span><br><br>
-        <span>Caught at {{ fish.date | date  : 'dd.MM.yyyy, HH:mm' }}</span><br><br>
+        <span>Caught on {{ fish.date | date  : 'dd.MM.yyyy' }} {{ fish.time }}</span><br><br>
         <span>Comment: {{ fish.comment }}</span>
     </mat-card-content>
 

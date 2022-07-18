@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Fish } from 'src/models/fish.class';
+import { BigFishComponent } from '../big-fish/big-fish.component';
 import { DialogDeleteEntryComponent } from '../dialog-delete-entry/dialog-delete-entry.component';
 import { DialogEditEntryComponent } from '../dialog-edit-entry/dialog-edit-entry.component';
 
@@ -16,6 +17,7 @@ export class FishingComponent implements OnInit {
   catchId = '';
   fish: Fish = new Fish();
   reloadCount: number = 0;
+  imagePath;
 
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
@@ -28,6 +30,7 @@ export class FishingComponent implements OnInit {
       this.catchId = paramMap.get('id');
       this.getFish();
     });
+
     // to show title:
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
@@ -45,6 +48,7 @@ export class FishingComponent implements OnInit {
       .valueChanges()
       .subscribe((fish: any) => {
         this.fish = new Fish(fish);
+        this.imagePath = 'assets/img/' + this.fish.fish + '.jpg';
       })
   }
 
@@ -60,5 +64,11 @@ export class FishingComponent implements OnInit {
     const dialog = this.dialog.open(DialogDeleteEntryComponent);
     dialog.componentInstance.fish = new Fish(this.fish.toJson());
     dialog.componentInstance.catchId = this.catchId;
+    
+  }
+
+  bigPicture(){
+    const dialog = this.dialog.open(BigFishComponent);
+    dialog.componentInstance.imagePath = this.imagePath;
   }
 }

@@ -36,6 +36,7 @@ import { LegalComponent } from './legal/legal.component';
 import { DataprotectComponent } from './dataprotect/dataprotect.component';
 import { DialogDeleteEntryComponent } from './dialog-delete-entry/dialog-delete-entry.component';
 import { DialogEditEntryComponent } from './dialog-edit-entry/dialog-edit-entry.component';
+import { BigFishComponent } from './big-fish/big-fish.component';
 
 
 
@@ -51,7 +52,8 @@ import { DialogEditEntryComponent } from './dialog-edit-entry/dialog-edit-entry.
     LegalComponent,
     DataprotectComponent,
     DialogDeleteEntryComponent,
-    DialogEditEntryComponent
+    DialogEditEntryComponent,
+    BigFishComponent
   ],
   imports: [
 

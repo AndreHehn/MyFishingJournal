@@ -1,23 +1,37 @@
 <div class="dialog-container">
-
     <div class="position-content">
         <div class="left-content">
-            <div>
-                <span>What kind of Fish have you caught?</span><br>
-                <mat-form-field appearance="standard" color="accent" class="full-width">
-                    <input [disabled]="loading" [(ngModel)]="fish.fish" matInput placeholder="fish">
-                </mat-form-field>
+            <div class="add-wrap">
+                <div>
+                    <span>What kind of Fish have you caught?</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <mat-select [disabled]="loading" [(ngModel)]="fish.fish" placeholder="fish">
+                            <mat-option value="trout">Trout</mat-option>
+                            <mat-option value="perch">Perch</mat-option>
+                            <mat-option value="Pike">Pike</mat-option>
+                            <mat-option value="carp">Carp</mat-option>
+                            <mat-option value="catfish">Catfish</mat-option>
+                            <mat-option value="other">Other</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <span>Where have you caught the fish?</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
+                    </mat-form-field>
+                </div>
             </div>
             <div class="add-wrap">
                 <div>
-                    <span>What is the lenght of the fish? (in cm)</span><br>
+                    <span>What is the lenght (in cm) of the fish?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <input [disabled]="loading" [(ngModel)]="fish.length" type="number" matInput
                             placeholder="Length">
                     </mat-form-field>
                 </div>
                 <div>
-                    <span>How much did it weight? (in g)</span><br>
+                    <span>How much did it weight (in g)?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <input [disabled]="loading" [(ngModel)]="fish.weight" type="number" matInput
                             placeholder="Weight">
@@ -26,15 +40,23 @@
             </div>
             <div class="add-wrap">
                 <div>
-                    <span>Where have you caught the fish?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
-                    </mat-form-field>
-                </div>
-                <div>
                     <span>When have you caught this fish?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input [disabled]="loading" id="date" [(ngModel)]="date" matInput (ngModelChange)="pushClass()" [class.changed]="valueChanged" class="date" type="datetime-local">
+                        <input placeholder="MM/DD/YYYY" [disabled]="loading" [(ngModel)]="date" matInput
+                            [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <mat-select [disabled]="loading" [(ngModel)]="fish.time" placeholder="time">
+                            <mat-option value="night">at night</mat-option>
+                            <mat-option value="in the morning"> in the morning</mat-option>
+                            <mat-option value="at noon">at noon</mat-option>
+                            <mat-option value="in the afternoon"> in the afternoon</mat-option>
+                            <mat-option value="in the evening">in the evening</mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
             </div>
@@ -42,7 +64,7 @@
                 <div>
                     <span>How was the weather?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <mat-select [disabled]="loading" [(ngModel)]="fish.weather" placeholder="Weather">
+                        <mat-select [disabled]="loading" [(ngModel)]="fish.weather" placeholder="weather">
                             <mat-option value="sunny">Sunny</mat-option>
                             <mat-option value="partly cloudy">Partly cloudy</mat-option>
                             <mat-option value="cloudy">Cloudy</mat-option>
@@ -52,6 +74,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+
                 <div>
                     <span>At which temperature? (in °C)</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
@@ -77,7 +100,6 @@
                 </div>
             </div>
         </div>
-        <div class="right-content">Cahnge the picture of the fish!</div>
     </div>
     <div mat-dialog-actions class="button-wrap">
         <button color="accent" [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel </button>

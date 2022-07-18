@@ -14,7 +14,7 @@ export class DialogEditEntryComponent implements OnInit {
 
   fish: Fish = new Fish();
   loading = false;
-  date: Date = new Date();
+  date = new Date();
   catchId: string = '';
   valueChanged = false;
 
@@ -22,6 +22,7 @@ export class DialogEditEntryComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogEditEntryComponent>) { }
 
   ngOnInit(): void {
+
   }
 
   saveEntry() {
@@ -37,8 +38,6 @@ export class DialogEditEntryComponent implements OnInit {
       });
   };
 
-  pushClass() {
-    this.valueChanged = true;
-  }
+
 
 }
