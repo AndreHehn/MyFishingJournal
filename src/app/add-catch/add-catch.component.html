@@ -1,33 +1,85 @@
-<div class="dialog-container">
-    <div mat-dialog-content>
-        <div> <span>What kind of Fish have you caught?</span><br>
-            <mat-form-field appearance="standard" color="accent" class="mr-16">
-                <input [disabled]="loading" [(ngModel)]="fish.fish" matInput placeholder="fish">
-            </mat-form-field>
+<mat-card>
+    <div class="position-content">
+        <div class="left-content">
+            <div>
+                <span>What kind of Fish have you caught?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <input [disabled]="loading" [(ngModel)]="fish.fish" matInput placeholder="fish">
+                </mat-form-field>
+            </div>
+            <div class="add-wrap">
+                <div>
+                    <span>What is the lenght of the fish? (in cm)</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <input [disabled]="loading" [(ngModel)]="fish.length" type="number" matInput
+                            placeholder="Length">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <span>How much did it weight? (in g)</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <input [disabled]="loading" [(ngModel)]="fish.weight" type="number" matInput
+                            placeholder="Weight">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="add-wrap">
+                <div>
+                    <span>Where have you caught the fish?</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <span>When have you caught this fish?</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <input [disabled]="loading" [(ngModel)]="date" matInput class="date" type="datetime-local">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="add-wrap">
+                <div>
+                    <span>How was the weather?</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <mat-select [disabled]="loading" [(ngModel)]="fish.weather" placeholder="Weather">
+                            <mat-option value="sunny">Sunny</mat-option>
+                            <mat-option value="partly cloudy">Partly cloudy</mat-option>
+                            <mat-option value="cloudy">Cloudy</mat-option>
+                            <mat-option value="partly rainy">Partly rainy</mat-option>
+                            <mat-option value="rainy">Rainy</mat-option>
+                            <mat-option value="foggy">Foggy</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <span>At which temperature? (in °C)</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <input [disabled]="loading" [(ngModel)]="fish.temperature" type="number" matInput
+                            placeholder="Temperature">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="add-wrap">
+                <div>
+                    <span>Whith which method have you caught it?</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <textarea [disabled]="loading" [(ngModel)]="fish.method" rows="3" matInput
+                            placeholder="Caught with a worm?"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <span>Are there any particularities?</span><br>
+                    <mat-form-field appearance="standard" color="accent" class="full-width">
+                        <textarea [disabled]="loading" [(ngModel)]="fish.comment" rows="3" matInput
+                            placeholder="Let a comment here!"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
-        <div>
-            <span>What is the lenght of the fish?</span><br>
-            <mat-form-field appearance="standard" color="accent" class="full-width">
-                <input [disabled]="loading" [(ngModel)]="fish.length" matInput placeholder="Length">
-            </mat-form-field>
-        </div>
-        <div>
-            <span>When have you caught this fish?</span><br>
-            <mat-form-field appearance="standard" color="accent" class="full-width">
-                <input [disabled]="loading" [(ngModel)]="date" matInput class ="date" type="datetime-local">
-            </mat-form-field>
-        </div>
-
-        <div>
-            <span>Where have you caught the fish?</span><br>
-            <mat-form-field appearance="standard" color="accent" class="full-width">
-                <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
-            </mat-form-field>
-        </div>
-
+        <div class="right-content">Upload a picture of the fish!</div>
     </div>
-    <div mat-dialog-actions>
-        <button [disabled]="loading" mat-button (click)="cancelAdd()">Cancel </button>
-        <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+    <div mat-dialog-actions class="button-wrap">
+        <button [disabled]="loading" mat-button (click)="cancelAdd()" color="accent">Cancel </button>
+        <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial color="accent">Save</button>
     </div>
-</div>
+</mat-card>

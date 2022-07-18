@@ -10,22 +10,21 @@
     <img src="assets/img/logo.png">
     <div class="user-details">
         <h2> {{fish.fish | titlecase}}</h2>
-        {{fish.length}}
+        {{fish.length}} cm
     </div>
 </mat-card>
 
 <mat-card class="mt-32">
     <mat-card-title>
         Details:
-    </mat-card-title>
+    </mat-card-title><br>
     <mat-card-content>
-        <span>Weight: {{ fish.weight }}</span><br>
-        <span>Caught near: {{ fish.place | titlecase }}</span><br>
-        <span> With this method: {{fish.method }}</span><br>
-        <span>The Weather was: {{ fish.weather }}</span><br>
-        <span>With a temperature of {{ fish.temperature }}°C</span><br>
-        <span>Caught at {{ fish.date | date  : 'dd.MM.yyyy, HH:mm' }}</span><br>
-        <span> Comment: {{ fish.comment }}</span>
+        <span>Weight: {{ fish.weight }} grams</span><br><br>
+        <span>Caught near: {{ fish.place | titlecase }}</span><br><br>
+        <span> With this method: {{ fish.method }}</span><br><br>
+        <span>The weather was {{ fish.weather }} with a temperature of {{ fish.temperature }}°C</span><br><br>
+        <span>Caught at {{ fish.date | date  : 'dd.MM.yyyy, HH:mm' }}</span><br><br>
+        <span>Comment: {{ fish.comment }}</span>
     </mat-card-content>
 
 </mat-card>

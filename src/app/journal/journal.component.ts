@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { PageEvent } from '@angular/material/paginator';
-import { filter } from 'rxjs';
 import { Fish } from 'src/models/fish.class';
 
 
@@ -49,6 +48,7 @@ export class JournalComponent implements OnInit {
   constructor(private firestore: AngularFirestore) {
   }
 
+
   ngOnInit(): void {
     this.firestore.collection('fishes').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
       this.allFishes = changes;
@@ -63,8 +63,8 @@ export class JournalComponent implements OnInit {
     if (this.searchValue.length == 0) this.renderArray = this.allFishes;
     if (this.searchValue.length > 0) {
       for (let i = 0; i < this.allFishes.length; i++) {
-        if (this.allFishes[i]['fish'].toLowerCase().includes(this.searchValue.toLowerCase()) ||
-          this.allFishes[i]['place'].toLowerCase().includes(this.searchValue.toLowerCase())) {
+        if (this.allFishes[i]['fish'].includes(this.searchValue.toLowerCase()) ||
+          this.allFishes[i]['place'].includes(this.searchValue.toLowerCase())) {
           filteredArray.push(this.allFishes[i]);
         }
       }
@@ -122,7 +122,10 @@ export class JournalComponent implements OnInit {
     }
   }
 
-
+/**
+ * 
+ * function for pagination
+ */
   OnPageChange(event: PageEvent) {
     this.startIndex = event.pageIndex * event.pageSize;
     this.endIndex = this.startIndex + event.pageSize;
@@ -131,6 +134,7 @@ export class JournalComponent implements OnInit {
     }
     this.slicedArray = this.renderArray.slice(this.startIndex, this.endIndex);
   }
+
 
   clearSearch() {
     this.searchValue = '';

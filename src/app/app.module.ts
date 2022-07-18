@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
+import {MatSelectModule} from '@angular/material/select'; 
 
 import { FormsModule } from '@angular/forms';
 import { JournalComponent } from './journal/journal.component';
@@ -60,6 +61,7 @@ import { DialogEditEntryComponent } from './dialog-edit-entry/dialog-edit-entry.
     MatIconModule,
     MatTooltipModule,
     FormsModule,
+    MatSelectModule,
     MatCardModule,
     MatButtonModule,
     MatInputModule,
