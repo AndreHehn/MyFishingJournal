@@ -9,6 +9,6 @@
     <h1>This entry has been deleted!</h1>
     <p>You will be autmatically redirected to journal. <br>If it doesn't work, click on Close</p>
     <div>
-        <button color="accent" mat-button routerLink="/journal" routerLinkActive="router-link-active" cdkFocusInitial>Close</button>
+        <button color="accent" mat-button routerLink="/journal" routerLinkActive="router-link-active" (click)="dialogRef.close()" cdkFocusInitial>Close</button>
     </div>
 </div>
