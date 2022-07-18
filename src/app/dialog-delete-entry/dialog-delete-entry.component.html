@@ -1,6 +1,6 @@
 <div class="dialog-container"  [class.d-none]="deleted">
     <h1 mat-dialog-title>Do you really want to delete this entry?</h1>
-    <div>
+    <div class="button-wrapper">
         <button [disabled]="loading" color="accent" mat-button (click)="dialogRef.close()">Cancel</button>
         <button [disabled]="loading" color="accent" mat-button (click)="deleteEntry()" cdkFocusInitial>Delete</button>
     </div>
@@ -8,7 +8,7 @@
 <div class="dialog-container"  [class.d-none]="!deleted">
     <h1>This entry has been deleted!</h1>
     <p>You will be autmatically redirected to journal. <br>If it doesn't work, click on Close</p>
-    <div>
+    <div class="button-wrapper">
         <button color="accent" mat-button routerLink="/journal" routerLinkActive="router-link-active" (click)="dialogRef.close()" cdkFocusInitial>Close</button>
     </div>
 </div>
