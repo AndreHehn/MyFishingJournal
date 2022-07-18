@@ -1,0 +1,45 @@
+::-webkit-calendar-picker-indicator {
+    filter: invert(63%) sepia(0%) saturate(0%) hue-rotate(212deg) brightness(96%) contrast(91%);
+    transform: scale(1.5);
+}
+
+.date {
+    color: #989898;
+
+    &:focus {
+        color: #fff;
+    }
+}
+
+.changed {
+    color: #fff;
+}
+
+.add-wrap {
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+}
+
+.full-width {
+    width: 280px;
+}
+
+.position-content {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.right-content {
+    padding-left: 16px;
+}
+
+.button-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        font-size: 18px;
+    }
+}
