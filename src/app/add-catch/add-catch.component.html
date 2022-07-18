@@ -33,7 +33,7 @@
                 <div>
                     <span>When have you caught this fish?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input [disabled]="loading" [(ngModel)]="date" matInput class="date" type="datetime-local">
+                        <input [disabled]="loading" id="date" [(ngModel)]="date" matInput (ngModelChange)="pushClass()" [class.changed]="valueChanged" class="date" type="datetime-local">
                     </mat-form-field>
                 </div>
             </div>

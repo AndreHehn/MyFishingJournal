@@ -70,10 +70,10 @@
             </th>
         </tr>
         <tr *ngFor="let fish of slicedArray" [routerLink]="['/details/' + fish.customId]">
-            <td>{{fish.fish | titlecase}}</td>
-            <td>{{fish.length}} cm</td>
-            <td>{{fish.place | titlecase}}</td>
-            <td>{{fish.date | date}}</td>
+            <td>{{ fish.fish | titlecase }}</td>
+            <td>{{ fish.length }} cm</td>
+            <td>{{ fish.place | titlecase }}</td>
+            <td>{{ fish.date | date : 'dd.MM.YYYY' }}</td>
         </tr>
     </table>
 

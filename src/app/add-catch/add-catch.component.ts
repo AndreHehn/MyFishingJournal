@@ -14,10 +14,12 @@ export class AddCatchComponent implements OnInit {
   fish: Fish = new Fish();
   date: Date = new Date();
   loading = false;
+  valueChanged = false;
 
   constructor(private firestore: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
 
@@ -33,6 +35,11 @@ export class AddCatchComponent implements OnInit {
         this.router.navigate(['/details/' + myID]);
       });
   }
+
+  pushClass(){
+    this.valueChanged = true;
+  }
+
 
   cancelAdd() { }
 

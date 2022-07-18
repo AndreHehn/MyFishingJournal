@@ -5,27 +5,41 @@
 
 .date {
     color: #989898;
+
+    &:focus {
+        color: #fff;
+    }
 }
 
-.add-wrap{
-    display:flex;
+.changed {
+    color: #fff;
+}
+
+.add-wrap {
+    display: flex;
     width: 600px;
     justify-content: space-between;
 }
 
-.full-width{
+.full-width {
     width: 280px;
 }
-.position-content{
-    display:flex;
+
+.position-content {
+    display: flex;
     justify-content: flex-start;
 }
-.right-content{
-    padding-left:16px;
+
+.right-content {
+    padding-left: 16px;
 }
-.button-wrap{
+
+.button-wrap {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-   button{font-size: 18px;} 
+
+    button {
+        font-size: 18px;
+    }
 }
