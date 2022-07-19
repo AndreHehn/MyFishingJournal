@@ -1,37 +1,40 @@
-<mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
+<mat-drawer-container class="mat-drawer-container" autosize (backdropClick)="drawer.toggle()">
+  <mat-drawer #drawer class="sidenav" mode="over" [opened]="false">
+
     <div class="logo-container"><img src="assets/img/logo_big.png" routerLink="/journal"
         routerLinkActive="router-link-active">
     </div>
     <ul>
       <li class="no-cursor"></li>
-      <li routerLink="/journal" routerLinkActive="router-link-active">
+      <li routerLink="/journal" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>set_meal</mat-icon>Journal
       </li>
-      <li routerLink="/addcatch" routerLinkActive="router-link-active">
+      <li routerLink="/addcatch" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>phishing</mat-icon>Add Catch
       </li><!--
-      <li routerLink="/analysis" routerLinkActive="router-link-active">
+      <li routerLink="/analysis" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>bar_chart</mat-icon>Analysis
       </li>
-      <li routerLink="/notes" routerLinkActive="router-link-active">
+      <li routerLink="/notes" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>description</mat-icon>Notes
       </li>
       <li class="no-cursor"></li>
       <li class="no-cursor"></li>
-      <li routerLink="/settings" routerLinkActive="router-link-active">
+      <li routerLink="/settings" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>settings</mat-icon>Settings
       </li>-->
       <li class="no-cursor"></li>
-      <li routerLink="/legal" routerLinkActive="router-link-active">
+      <li routerLink="/legal" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>policy</mat-icon>Legal notice
       </li>
-      <li routerLink="/dataprotection" routerLinkActive="router-link-active">
+      <li routerLink="/dataprotection" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>https</mat-icon>Data protection
       </li>
     </ul>
   </mat-drawer>
-  <div class="example-sidenav-content">
+
+
+  <div class="sidenav-content">
     <mat-toolbar color="primary">
       <mat-toolbar-row class="header">
         <div class="header-left">

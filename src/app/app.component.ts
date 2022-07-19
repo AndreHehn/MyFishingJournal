@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
+
 import { Router, NavigationStart } from '@angular/router';
 
 @Component({
@@ -41,7 +42,6 @@ export class AppComponent {
       }
     });
   }
-
 
 
 }
