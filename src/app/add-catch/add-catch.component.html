@@ -1,8 +1,7 @@
 <mat-card>
     <div class="position-content">
-        <div class="left-content">
             <div class="add-wrap">
-                <div>
+                <div class="inner-wrap">
                     <span>What kind of Fish have you caught?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <mat-select [disabled]="loading" [(ngModel)]="fish.fish" placeholder="fish">
@@ -15,7 +14,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div>
+                <div class="inner-wrap">
                     <span>Where have you caught the fish?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
@@ -23,14 +22,14 @@
                 </div>
             </div>
             <div class="add-wrap">
-                <div>
+                <div class="inner-wrap">
                     <span>What is the lenght (in cm) of the fish?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <input [disabled]="loading" [(ngModel)]="fish.length" type="number" matInput
                             placeholder="Length">
                     </mat-form-field>
                 </div>
-                <div>
+                <div class="inner-wrap">
                     <span>How much did it weight (in g)?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <input [disabled]="loading" [(ngModel)]="fish.weight" type="number" matInput
@@ -40,7 +39,7 @@
             </div>
             <div class="add-wrap">
 
-                <div>
+                <div class="inner-wrap">
                     <span>When have you caught this fish?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <input placeholder="MM/DD/YYYY" [disabled]="loading" [(ngModel)]="date" matInput
@@ -50,7 +49,7 @@
                     </mat-form-field>
 
                 </div>
-                <div><br>
+                <div class="inner-wrap"><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <mat-select [disabled]="loading" [(ngModel)]="fish.time" placeholder="time">
                             <mat-option value="night">at night</mat-option>
@@ -63,7 +62,7 @@
                 </div>
             </div>
             <div class="add-wrap">
-                <div>
+                <div class="inner-wrap">
                     <span>How was the weather?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <mat-select [disabled]="loading" [(ngModel)]="fish.weather" placeholder="weather">
@@ -76,8 +75,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-
-                <div>
+                <div class="inner-wrap">
                     <span>At which temperature? (in °C)</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <input [disabled]="loading" [(ngModel)]="fish.temperature" type="number" matInput
@@ -86,14 +84,14 @@
                 </div>
             </div>
             <div class="add-wrap">
-                <div>
+                <div class="inner-wrap">
                     <span>Whith which method have you caught it?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <textarea [disabled]="loading" [(ngModel)]="fish.method" rows="3" matInput
                             placeholder="Caught with a worm?"></textarea>
                     </mat-form-field>
                 </div>
-                <div>
+                <div class="inner-wrap">
                     <span>Are there any particularities?</span><br>
                     <mat-form-field appearance="standard" color="accent" class="full-width">
                         <textarea [disabled]="loading" [(ngModel)]="fish.comment" rows="3" matInput
@@ -101,7 +99,6 @@
                     </mat-form-field>
                 </div>
             </div>
-        </div>
     </div>
     <div class="button-wrap">
         <button [disabled]="loading" mat-button (click)="cancelAdd()" color="accent">Cancel</button>

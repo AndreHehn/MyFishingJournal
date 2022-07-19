@@ -19,12 +19,115 @@
         Details:
     </mat-card-title><br>
     <mat-card-content>
-        <span>Weight: {{ fish.weight }} grams</span><br><br>
-        <span>Caught near: {{ fish.place | titlecase }}</span><br><br>
-        <span> With this method: {{ fish.method }}</span><br><br>
-        <span>The weather was {{ fish.weather }} with a temperature of {{ fish.temperature }}°C</span><br><br>
-        <span>Caught on {{ fish.date | date  : 'dd.MM.yyyy' }} {{ fish.time }}</span><br><br>
-        <span>Comment: {{ fish.comment }}</span>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <td>
+                        <mat-icon>scale</mat-icon>
+                    </td>
+                    <td>
+                        Weight:
+                    </td>
+                    <td>
+                        {{ fish.weight }} grams
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-icon>place</mat-icon>
+                    </td>
+                    <td>
+                        Caught near:
+                    </td>
+                    <td>
+                        {{ fish.place | titlecase }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-icon>question_mark</mat-icon>
+                    </td>
+                    <td>
+                        With this method:
+                    </td>
+                    <td>
+                        {{ fish.method }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-icon>sunny</mat-icon>
+                    </td>
+                    <td>
+                        The weather was:
+                    </td>
+                    <td>
+                        {{ fish.weather }}
+                    </td>
+
+                </tr>
+
+
+            </table>
+   
+            <table>
+                <tr>
+                    <td>
+                        <mat-icon>straighten</mat-icon>
+                    </td>
+                    <td>
+                        Length:
+                    </td>
+                    <td>
+                        {{ fish.length }} cm
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-icon>calendar_month</mat-icon>
+                    </td>
+                    <td>Caught on:</td>
+                    <td>
+                        {{ fish.date | date : 'dd.MM.yyyy' }} {{ fish.time }}
+                    </td>
+                </tr>
+            <tr>
+                <td>
+                    <mat-icon>notes</mat-icon>
+                </td>
+                <td>
+                    Comment:
+                </td>
+                <td>
+                    {{ fish.comment }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-icon>thermostat</mat-icon>
+                </td>
+                <td>
+                    with a temperature of
+                </td>
+                <td>
+                    {{ fish.temperature }}°C
+                </td>
+            </tr>
+            </table>
+        </div>
+
+        <span>
+
+        </span><br><br>
+        <span>
+
+        </span><br><br>
+        <span>
+
+        </span><br><br>
+        <span>
+
+        </span>
     </mat-card-content>
 
 </mat-card>
