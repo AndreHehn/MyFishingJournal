@@ -38,13 +38,14 @@ export class AuthService {
     });
   }
   // Sign in with email/password
-  /*
+  
   SignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['journal']);
+          location.reload();
         });
         this.SetUserData(result.user);
       })
@@ -52,7 +53,7 @@ export class AuthService {
         window.alert(error.message);
       });
   }
-  */
+  
   // Sign up with email/password
   /*
   SignUp(email: string, password: string) {
@@ -101,7 +102,7 @@ export class AuthService {
   
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null !== false ? true : false;
   }
   
 
@@ -111,7 +112,7 @@ export class AuthService {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
         this.router.navigate(['journal']);
-
+        location.reload();
       }
     });
   }

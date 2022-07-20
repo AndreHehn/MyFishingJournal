@@ -25,7 +25,9 @@
         <mat-icon>settings</mat-icon>Settings
       </li>-->
       <li class="no-cursor"></li>
-      <li (click)="authService.SignOut()"><mat-icon>logout</mat-icon> Log Out</li>
+      <li (click)="authService.SignOut()">
+        <mat-icon>logout</mat-icon> Log Out
+      </li>
       <li class="no-cursor"></li>
       <li routerLink="/legal" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>policy</mat-icon>Legal notice
@@ -59,12 +61,15 @@
 
 
 
+<div class="login-wrap">
 
-<div class="log-in" *ngIf="!connected">
-  <div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <!--
+  <mat-card class="log-in" *ngIf="!connected">
+    <h1 color="accent">My fishing journal</h1>
+    <span>With this little app you can document all catches.</span>
+    <div class="displayTable">
+      <div class="displayTableCell">
+        <div class="authBlock">
+          <!--
           <h3>Sign In</h3>
         <div class="formGroup">
           <input type="text" class="formControl" placeholder="Username" #userName required>
@@ -72,9 +77,9 @@
         <div class="formGroup">
           <input type="password" class="formControl" placeholder="Password" #userPassword required>
         </div>-->
-        <!-- Calling SignIn Api from AuthService -->
+          <!-- Calling SignIn Api from AuthService -->
 
-        <!--
+          <!--
         <div class="formGroup">
           <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
         </div>
@@ -83,30 +88,40 @@
         </div>
 
       -->
-        <!-- Calling GoogleAuth Api from AuthService -->
-        <div class="formGroup">
-          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-            <i class="fab fa-google-plus-g"></i>
-            Log in with Google
-          </button>
+          <!-- Calling GoogleAuth Api from AuthService -->
+          <div class="formGroup">
+            <button color="accent" mat-button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+              <i class="fab fa-google-plus-g"></i>
+              Log in with Google
+            </button>
+          </div>
+          <div class="formGroup">
+            <button color="accent" mat-button type="button" class="btn googleBtn" (click)="authService.SignIn('guestuser@andrehehn.de', 'TestUser')">
+              <i class="fab fa-google-plus-g"></i>
+              Or log in as guest
+            </button>
+          </div>
+          <!--
+          <div class="forgotPassword">
+            <span routerLink="/forgot-password">Forgot Password?</span>
+          </div>
+        -->
         </div>
-        <div class="forgotPassword">
-          <span routerLink="/forgot-password">Forgot Password?</span>
+        <!--
+        <div class="redirectToLogin">
+          <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
         </div>
-      </div>
-      <div class="redirectToLogin">
-        <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
+      -->
       </div>
     </div>
-  </div>
 
 
 
-
-  <div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <!--
+    <!--
+    <div class="displayTable">
+      <div class="displayTableCell">
+        <div class="authBlock">
+ 
           
           ng <h3>Sign Up</h3>
         <div class="formGroup">
@@ -138,7 +153,8 @@
         <div class="formGroup">
           <span class="or"><span class="orInner">Or</span></span>
         </div> -->
-        <!-- Continue with Google -->
+    <!-- Continue with Google -->
+    <!--
         <div class="formGroup">
           <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
             <i class="fab fa-google-plus-g"></i>
@@ -150,14 +166,14 @@
         <span>Already have an account?
           <span class="redirect" routerLink="/sign-in">Log In</span></span>
       </div>
-    </div>
-  </div>
+
+        </div>
+
+        </div>
+
+            -->
 
 
 
-
-
-
-
-
+  </mat-card>
 </div>
