@@ -15,6 +15,7 @@ export class AddCatchComponent implements OnInit {
   date: Date = new Date();
   loading = false;
   valueChanged = false;
+  user;
 
   constructor(private firestore: AngularFirestore, private router: Router) { }
 
@@ -25,6 +26,8 @@ export class AddCatchComponent implements OnInit {
 
   saveUser() {
     this.fish.date = Number(new Date(this.date));
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.fish.userId =this.user.uid;
     this.loading = true;
     this.firestore
       .collection('fishes')

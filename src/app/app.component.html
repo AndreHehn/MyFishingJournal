@@ -5,7 +5,7 @@
         routerLinkActive="router-link-active">
     </div>
     <ul>
-      <li (click)="authService.SignOut()"><mat-icon>logout</mat-icon> Log Out</li>
+      <li class="no-cursor"></li>
       <li routerLink="/journal" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>set_meal</mat-icon>Journal
       </li>
@@ -24,6 +24,8 @@
       <li routerLink="/settings" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>settings</mat-icon>Settings
       </li>-->
+      <li class="no-cursor"></li>
+      <li (click)="authService.SignOut()"><mat-icon>logout</mat-icon> Log Out</li>
       <li class="no-cursor"></li>
       <li routerLink="/legal" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>policy</mat-icon>Legal notice

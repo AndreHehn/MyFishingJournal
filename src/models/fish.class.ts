@@ -10,6 +10,7 @@ export class Fish {
     temperature: string = '';
     date: number;
     time: string ='';
+    userId : string = '';
 
 
 
@@ -24,6 +25,7 @@ export class Fish {
         this.temperature = obj ? obj.temperature : '';
         this.date = obj ? obj.date : '';
         this.time = obj ? obj.time : '';
+        this.userId = obj ? obj.userId : '';
     }
     public toJson() {
         return {
@@ -36,7 +38,8 @@ export class Fish {
             weather: this.weather,
             temperature: this.temperature,
             date: this.date,
-            time: this.time
+            time: this.time,
+            userId: this.userId
         }
     }
 }
