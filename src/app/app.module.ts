@@ -37,6 +37,7 @@ import { DataprotectComponent } from './dataprotect/dataprotect.component';
 import { DialogDeleteEntryComponent } from './dialog-delete-entry/dialog-delete-entry.component';
 import { DialogEditEntryComponent } from './dialog-edit-entry/dialog-edit-entry.component';
 import { BigFishComponent } from './big-fish/big-fish.component';
+import { AuthService } from './shared/services/auth.service';
 
 
 
@@ -80,7 +81,7 @@ import { BigFishComponent } from './big-fish/big-fish.component';
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

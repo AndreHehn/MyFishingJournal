@@ -1,6 +1,7 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Router, NavigationStart } from '@angular/router';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,11 @@ import { Router, NavigationStart } from '@angular/router';
 export class AppComponent {
   title: string = 'Details of catch';
   showSearch = false;
-  constructor(private router: Router) { }
+  connected = false;
+
+  constructor(private router: Router, public authService: AuthService) { }
+
+
   public ngOnInit() {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationStart) {
@@ -35,12 +40,19 @@ export class AppComponent {
         if (events.url === '/dataprotection') {
           this.title = "Data Protection";
         }
-
-
-
-
       }
     });
+
+    if (this.authService.isLoggedIn) {
+      this.connected = true;
+    }
+    if (!this.authService.isLoggedIn) {
+      this.connected = false;
+    }
+
+
+
+
   }
 
 
