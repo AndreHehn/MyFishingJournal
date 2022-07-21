@@ -36,3 +36,17 @@
     }
 }
 
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 8px;
+    cursor: pointer;
+    margin-top:0px;
+    &:hover{
+        color: #69F0AE;
+    }
+}

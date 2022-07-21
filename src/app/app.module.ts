@@ -38,6 +38,7 @@ import { DialogDeleteEntryComponent } from './dialog-delete-entry/dialog-delete-
 import { DialogEditEntryComponent } from './dialog-edit-entry/dialog-edit-entry.component';
 import { BigFishComponent } from './big-fish/big-fish.component';
 import { AuthService } from './shared/services/auth.service';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 
 
@@ -79,7 +80,8 @@ import { AuthService } from './shared/services/auth.service';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

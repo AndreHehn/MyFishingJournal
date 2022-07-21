@@ -11,6 +11,7 @@ export class Fish {
     date: number;
     time: string ='';
     userId : string = '';
+    picUrl : string = '';
 
 
 
@@ -26,6 +27,7 @@ export class Fish {
         this.date = obj ? obj.date : '';
         this.time = obj ? obj.time : '';
         this.userId = obj ? obj.userId : '';
+        this.picUrl = obj ? obj.picUrl : '';
     }
     public toJson() {
         return {
@@ -39,7 +41,8 @@ export class Fish {
             temperature: this.temperature,
             date: this.date,
             time: this.time,
-            userId: this.userId
+            userId: this.userId,
+            picUrl: this.picUrl
         }
     }
 }

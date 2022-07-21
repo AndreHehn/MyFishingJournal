@@ -1,104 +1,114 @@
 <mat-card>
     <div class="position-content">
-            <div class="add-wrap">
-                <div class="inner-wrap">
-                    <span>What kind of Fish have you caught?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <mat-select [disabled]="loading" [(ngModel)]="fish.fish" placeholder="fish">
-                            <mat-option value="trout">Trout</mat-option>
-                            <mat-option value="perch">Perch</mat-option>
-                            <mat-option value="Pike">Pike</mat-option>
-                            <mat-option value="carp">Carp</mat-option>
-                            <mat-option value="catfish">Catfish</mat-option>
-                            <mat-option value="other">Other (specify in comment)</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="inner-wrap">
-                    <span>Where have you caught the fish?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
-                    </mat-form-field>
-                </div>
+        <div class="add-wrap">
+            <div class="inner-wrap">
+                <span>What kind of Fish have you caught?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <mat-select [disabled]="loading" [(ngModel)]="fish.fish" placeholder="fish">
+                        <mat-option value="trout">Trout</mat-option>
+                        <mat-option value="perch">Perch</mat-option>
+                        <mat-option value="Pike">Pike</mat-option>
+                        <mat-option value="carp">Carp</mat-option>
+                        <mat-option value="catfish">Catfish</mat-option>
+                        <mat-option value="other">Other (specify in comment)</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
-            <div class="add-wrap">
-                <div class="inner-wrap">
-                    <span>What is the lenght (in cm) of the fish?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input [disabled]="loading" [(ngModel)]="fish.length" type="number" matInput
-                            placeholder="Length">
-                    </mat-form-field>
-                </div>
-                <div class="inner-wrap">
-                    <span>How much did it weight (in g)?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input [disabled]="loading" [(ngModel)]="fish.weight" type="number" matInput
-                            placeholder="Weight">
-                    </mat-form-field>
-                </div>
+            <div class="inner-wrap">
+                <span>Where have you caught the fish?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
+                </mat-form-field>
             </div>
-            <div class="add-wrap">
+        </div>
+        <div class="add-wrap">
+            <div class="inner-wrap">
+                <span>What is the lenght (in cm) of the fish?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <input [disabled]="loading" [(ngModel)]="fish.length" type="number" matInput placeholder="Length">
+                </mat-form-field>
+            </div>
+            <div class="inner-wrap">
+                <span>How much did it weight (in g)?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <input [disabled]="loading" [(ngModel)]="fish.weight" type="number" matInput placeholder="Weight">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="add-wrap">
 
-                <div class="inner-wrap">
-                    <span>When have you caught this fish?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input placeholder="MM/DD/YYYY" [disabled]="loading" [(ngModel)]="date" matInput
-                            [matDatepicker]="picker">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+            <div class="inner-wrap">
+                <span>When have you caught this fish?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <input placeholder="MM/DD/YYYY" [disabled]="loading" [(ngModel)]="date" matInput
+                        [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
 
-                </div>
-                <div class="inner-wrap"><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <mat-select [disabled]="loading" [(ngModel)]="fish.time" placeholder="time">
-                            <mat-option value="night">at night</mat-option>
-                            <mat-option value="in the morning"> in the morning</mat-option>
-                            <mat-option value="at noon">at noon</mat-option>
-                            <mat-option value="in the afternoon"> in the afternoon</mat-option>
-                            <mat-option value="in the evening">in the evening</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
             </div>
-            <div class="add-wrap">
-                <div class="inner-wrap">
-                    <span>How was the weather?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <mat-select [disabled]="loading" [(ngModel)]="fish.weather" placeholder="weather">
-                            <mat-option value="sunny">Sunny</mat-option>
-                            <mat-option value="partly cloudy">Partly cloudy</mat-option>
-                            <mat-option value="cloudy">Cloudy</mat-option>
-                            <mat-option value="partly rainy">Partly rainy</mat-option>
-                            <mat-option value="rainy">Rainy</mat-option>
-                            <mat-option value="foggy">Foggy</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="inner-wrap">
-                    <span>At which temperature? (in °C)</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input [disabled]="loading" [(ngModel)]="fish.temperature" type="number" matInput
-                            placeholder="Temperature">
-                    </mat-form-field>
-                </div>
+            <div class="inner-wrap"><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <mat-select [disabled]="loading" [(ngModel)]="fish.time" placeholder="time">
+                        <mat-option value="night">at night</mat-option>
+                        <mat-option value="in the morning"> in the morning</mat-option>
+                        <mat-option value="at noon">at noon</mat-option>
+                        <mat-option value="in the afternoon"> in the afternoon</mat-option>
+                        <mat-option value="in the evening">in the evening</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
-            <div class="add-wrap">
-                <div class="inner-wrap">
-                    <span>With which method have you caught it?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <textarea [disabled]="loading" [(ngModel)]="fish.method" rows="3" matInput
-                            placeholder="Caught with a worm?"></textarea>
-                    </mat-form-field>
-                </div>
-                <div class="inner-wrap">
-                    <span>Are there any particularities?</span><br>
-                    <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <textarea [disabled]="loading" [(ngModel)]="fish.comment" rows="3" matInput
-                            placeholder="Let a comment here!"></textarea>
-                    </mat-form-field>
-                </div>
+        </div>
+        <div class="add-wrap">
+            <div class="inner-wrap">
+                <span>How was the weather?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <mat-select [disabled]="loading" [(ngModel)]="fish.weather" placeholder="weather">
+                        <mat-option value="sunny">Sunny</mat-option>
+                        <mat-option value="partly cloudy">Partly cloudy</mat-option>
+                        <mat-option value="cloudy">Cloudy</mat-option>
+                        <mat-option value="partly rainy">Partly rainy</mat-option>
+                        <mat-option value="rainy">Rainy</mat-option>
+                        <mat-option value="foggy">Foggy</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
+            <div class="inner-wrap">
+                <span>At which temperature? (in °C)</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <input [disabled]="loading" [(ngModel)]="fish.temperature" type="number" matInput
+                        placeholder="Temperature">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="add-wrap">
+            <div class="inner-wrap">
+                <span>With which method have you caught it?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <textarea [disabled]="loading" [(ngModel)]="fish.method" rows="3" matInput
+                        placeholder="Caught with a worm?"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="inner-wrap">
+                <span>Are there any particularities?</span><br>
+                <mat-form-field appearance="standard" color="accent" class="full-width">
+                    <textarea [disabled]="loading" [(ngModel)]="fish.comment" rows="3" matInput
+                        placeholder="Let a comment here!"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+
+
+
+
+            <label for="files" class="custom-file-upload">
+                <input type="file" id="files" single accept="*.jpg" (change)="uploadFile($event)" (click)="deleteLastUpload()"
+                    placeholder="Upload a picture">
+                   <mat-icon>image</mat-icon> Choose a picture of the fish! <span *ngIf="uploadPercent">{{ uploadPercent | async }}% uploaded</span>
+            </label>
+
+        </div>
     </div>
     <div class="button-wrap">
         <button [disabled]="loading" mat-button (click)="cancelAdd()" color="accent">Cancel</button>

@@ -17,7 +17,6 @@ export class FishingComponent implements OnInit {
   catchId = '';
   fish: Fish = new Fish();
   reloadCount: number = 0;
-  imagePath;
 
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
@@ -48,7 +47,6 @@ export class FishingComponent implements OnInit {
       .valueChanges()
       .subscribe((fish: any) => {
         this.fish = new Fish(fish);
-        this.imagePath = 'assets/img/' + this.fish.fish + '.jpg';
       })
   }
 
@@ -69,6 +67,6 @@ export class FishingComponent implements OnInit {
 
   bigPicture(){
     const dialog = this.dialog.open(BigFishComponent);
-    dialog.componentInstance.imagePath = this.imagePath;
+    dialog.componentInstance.imagePath = this.fish.picUrl;
   }
 }
