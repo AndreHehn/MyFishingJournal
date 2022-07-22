@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Fish } from 'src/models/fish.class';
@@ -16,9 +17,10 @@ export class DialogDeleteEntryComponent implements OnInit {
   date: Date = new Date();
   catchId: string = '';
   deleted = false;
+  imagePath;
 
   constructor(private firestore: AngularFirestore,
-    public dialogRef: MatDialogRef<DialogDeleteEntryComponent>, private router: Router) { }
+    public dialogRef: MatDialogRef<DialogDeleteEntryComponent>, private router: Router, private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
   }
@@ -38,5 +40,8 @@ export class DialogDeleteEntryComponent implements OnInit {
           this.router.navigate(['/journal']);
         }, 2000);
       });
+
+    this.storage.storage.refFromURL(this.imagePath).delete();
+
   };
 }

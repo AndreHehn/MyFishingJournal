@@ -7,11 +7,12 @@
             <label for="files" class="custom-file-upload">
                 <input type="file" id="files" single accept="*.jpg" (change)="uploadFile($event)"
                     (click)="deleteLastUpload()" placeholder="Upload a picture">
-                    <span *ngIf="uploadPercent">{{
-                        uploadPercent | async }}% uploaded</span>Change picture
+                   Change picture <span *ngIf="uploadPercent">({{
+                    uploadPercent | async }}% uploaded)</span>
             </label>
         </div>
-        <button color="accent" mat-button (click)="dialogRef.close(); deleteLastUpload()">Discard and Close</button>
-        <button color="accent" mat-button (click)="dialogRef.close(); saveEntry()">Save</button>
+        <button *ngIf="uploaded" color="accent" mat-button (click)="dialogRef.close(); saveEntry()">Save</button>
+        <button *ngIf="uploaded" color="accent" mat-button (click)="dialogRef.close(); deleteLastUpload()">Discard and Close</button>
+        <button *ngIf="!uploaded" color="accent" mat-button (click)="dialogRef.close()">Close</button>
     </div>
 </div>

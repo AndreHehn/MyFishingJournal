@@ -61,6 +61,7 @@ export class AddCatchComponent implements OnInit {
 
 
   uploadFile(event) {
+    this.loading = true;
     const file = event.target.files[0];
     const filePath = 'fish_images' + Math.floor(Math.random() * 1000000000);
     const fileRef = this.storage.ref(filePath);
@@ -69,7 +70,8 @@ export class AddCatchComponent implements OnInit {
     this.uploadPercent = task.percentageChanges();    // observe percentage changes
     task.snapshotChanges().pipe(
       finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; }); // saves url of image to a variable
+        fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; });
+        this.loading =false; // saves url of image to a variable
       })
     ).subscribe();
   }

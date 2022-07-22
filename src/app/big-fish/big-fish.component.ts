@@ -15,9 +15,11 @@ import { finalize } from 'rxjs/operators';
 export class BigFishComponent implements OnInit {
 
   imagePath;
+  uploaded = false;
 
   constructor(
     public dialogRef: MatDialogRef<BigFishComponent>, private firestore: AngularFirestore, private router: Router, private storage: AngularFireStorage) {
+    dialogRef.disableClose = true;
   }
 
   ngOnInit(): void {
@@ -48,10 +50,10 @@ export class BigFishComponent implements OnInit {
     this.uploadPercent = task.percentageChanges();    // observe percentage changes
     task.snapshotChanges().pipe(
       finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; this.imagePath = url;}); // saves url of image to a variable
+        fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; this.imagePath = url; }); // saves url of image to a variable
       })
     ).subscribe();
-
+    this.uploaded = true;
   }
 
 

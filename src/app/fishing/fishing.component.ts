@@ -29,7 +29,6 @@ export class FishingComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.catchId = paramMap.get('id');
       this.getFish();
-      console.log(this.fish.picUrl);
     });
 
     // to show title:
@@ -64,6 +63,7 @@ export class FishingComponent implements OnInit {
     const dialog = this.dialog.open(DialogDeleteEntryComponent);
     dialog.componentInstance.fish = new Fish(this.fish.toJson());
     dialog.componentInstance.catchId = this.catchId;
+    dialog.componentInstance.imagePath = this.fish.picUrl;
   }
 
 
