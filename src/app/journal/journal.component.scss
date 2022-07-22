@@ -12,7 +12,6 @@
             &:hover {
                 background-color: unset;
             }
-
         }
 
         &:last-child {
@@ -123,11 +122,11 @@ mat-form-field.mat-form-field {
 
     .form-outer-wrap {
         width: 100%;
-
-        display:flex;
+        display: flex;
         justify-content: center;
     }
-    .form-wrap{
+
+    .form-wrap {
         position: unset;
     }
 

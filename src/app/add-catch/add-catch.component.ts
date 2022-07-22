@@ -22,11 +22,12 @@ export class AddCatchComponent implements OnInit {
   uploadPercent: Observable<number>;
   currentFile;
 
-  constructor(private firestore: AngularFirestore, private router: Router, private storage: AngularFireStorage) { }
+  constructor(private firestore: AngularFirestore,
+    private router: Router,
+    private storage: AngularFireStorage) { }
 
-  ngOnInit(): void {
 
-  }
+  ngOnInit(): void { }
 
 
   saveUser() {

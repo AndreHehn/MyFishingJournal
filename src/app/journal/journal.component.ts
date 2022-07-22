@@ -23,7 +23,6 @@ export class JournalComponent implements OnInit {
   searchValue: String = '';
   user = JSON.parse(localStorage.getItem('user'));
   userId = this.user.uid;
-
   sortingBy = [
     {
       "name": "fish",
@@ -48,8 +47,7 @@ export class JournalComponent implements OnInit {
   ];
 
 
-  constructor(private firestore: AngularFirestore) {
-  }
+  constructor(private firestore: AngularFirestore) { }
 
 
   ngOnInit(): void {

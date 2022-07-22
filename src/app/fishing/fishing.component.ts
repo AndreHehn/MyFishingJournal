@@ -20,9 +20,7 @@ export class FishingComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
-    private firestore: AngularFirestore) {
-
-  }
+    private firestore: AngularFirestore) { }
 
 
   ngOnInit(): void {

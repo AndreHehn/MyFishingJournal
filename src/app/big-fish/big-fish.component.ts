@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Fish } from 'src/models/fish.class';
 import { finalize } from 'rxjs/operators';
@@ -16,15 +15,6 @@ export class BigFishComponent implements OnInit {
 
   imagePath;
   uploaded = false;
-
-  constructor(
-    public dialogRef: MatDialogRef<BigFishComponent>, private firestore: AngularFirestore, private router: Router, private storage: AngularFireStorage) {
-    dialogRef.disableClose = true;
-  }
-
-  ngOnInit(): void {
-  }
-
   fish: Fish = new Fish();
   date: Date = new Date();
   user;
@@ -32,6 +22,14 @@ export class BigFishComponent implements OnInit {
   uploadPercent: Observable<number>;
   currentFile;
   catchId;
+
+  constructor(
+    public dialogRef: MatDialogRef<BigFishComponent>,
+    private firestore: AngularFirestore,
+    private storage: AngularFireStorage) { dialogRef.disableClose = true; }
+
+  ngOnInit(): void { }
+
 
   deleteLastUpload() {
     if (this.currentFile) {
@@ -67,5 +65,4 @@ export class BigFishComponent implements OnInit {
         this.dialogRef.close();
       });
   }
-
 }

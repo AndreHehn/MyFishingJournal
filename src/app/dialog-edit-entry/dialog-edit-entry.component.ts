@@ -21,9 +21,7 @@ export class DialogEditEntryComponent implements OnInit {
   constructor(private firestore: AngularFirestore,
     public dialogRef: MatDialogRef<DialogEditEntryComponent>) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   saveEntry() {
     this.fish.date = this.date.getTime();
@@ -37,7 +35,5 @@ export class DialogEditEntryComponent implements OnInit {
         this.dialogRef.close();
       });
   };
-
-
 
 }

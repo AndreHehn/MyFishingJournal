@@ -13,7 +13,8 @@ export class AppComponent {
   showSearch = false;
   connected = false;
 
-  constructor(private router: Router, public authService: AuthService) { }
+  constructor(private router: Router,
+    public authService: AuthService) { }
 
 
   public ngOnInit() {
@@ -28,19 +29,7 @@ export class AppComponent {
         if (events.url === '/dataprotection') this.title = "Data Protection";
       }
     });
-
-
-    if (this.authService.isLoggedIn) {
-      this.connected = true;
-    }
-
-
-    if (!this.authService.isLoggedIn) {
-      this.connected = false;
-    }
-
-    
+    this.connected = (this.authService.isLoggedIn) ? true : false;
   }
-
 
 }

@@ -20,10 +20,11 @@ export class DialogDeleteEntryComponent implements OnInit {
   imagePath;
 
   constructor(private firestore: AngularFirestore,
-    public dialogRef: MatDialogRef<DialogDeleteEntryComponent>, private router: Router, private storage: AngularFireStorage) { }
+    public dialogRef: MatDialogRef<DialogDeleteEntryComponent>,
+    private router: Router,
+    private storage: AngularFireStorage) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 
   deleteEntry() {

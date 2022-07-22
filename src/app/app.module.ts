@@ -28,7 +28,6 @@ import { FormsModule } from '@angular/forms';
 import { JournalComponent } from './journal/journal.component';
 import { AddCatchComponent } from './add-catch/add-catch.component';
 import { FishingComponent } from './fishing/fishing.component';
-import { SettingsComponent } from './settings/settings.component';
 import { LegalComponent } from './legal/legal.component';
 import { DataprotectComponent } from './dataprotect/dataprotect.component';
 import { DialogDeleteEntryComponent } from './dialog-delete-entry/dialog-delete-entry.component';
@@ -42,7 +41,6 @@ import { BigFishComponent } from './big-fish/big-fish.component';
     JournalComponent,
     AddCatchComponent,
     FishingComponent,
-    SettingsComponent,
     LegalComponent,
     DataprotectComponent,
     DialogDeleteEntryComponent,
