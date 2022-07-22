@@ -90,10 +90,6 @@
                 </mat-form-field>
             </div>
         </div>
-        <div>
-
-
-
             <div class="picture-wrap">
                 <img class="preview" *ngIf="pictureUrl" src="{{ pictureUrl }}">
                 <label for="files" class="custom-file-upload">
@@ -102,9 +98,7 @@
                     <mat-icon>image</mat-icon> Choose a picture of the fish! <span *ngIf="uploadPercent">{{
                         uploadPercent | async }}% uploaded</span>
                 </label>
-
             </div>
-        </div>
     </div>
     <div class="button-wrap">
         <button [disabled]="loading" mat-button (click)="cancelAdd()" color="accent">Cancel</button>

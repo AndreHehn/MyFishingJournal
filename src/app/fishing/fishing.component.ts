@@ -24,7 +24,7 @@ export class FishingComponent implements OnInit {
 
   }
 
-  
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       this.catchId = paramMap.get('id');
@@ -64,13 +64,13 @@ export class FishingComponent implements OnInit {
     const dialog = this.dialog.open(DialogDeleteEntryComponent);
     dialog.componentInstance.fish = new Fish(this.fish.toJson());
     dialog.componentInstance.catchId = this.catchId;
-
   }
 
 
   bigPicture() {
     const dialog = this.dialog.open(BigFishComponent);
     dialog.componentInstance.imagePath = this.fish.picUrl;
+    dialog.componentInstance.catchId = this.catchId;
   }
 
 }
