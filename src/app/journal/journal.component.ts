@@ -138,7 +138,6 @@ export class JournalComponent implements OnInit {
   }
 
   /**
-   * 
    * function for pagination
    */
   OnPageChange(event: PageEvent) {

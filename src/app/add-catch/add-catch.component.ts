@@ -18,9 +18,8 @@ export class AddCatchComponent implements OnInit {
   loading = false;
   valueChanged = false;
   user;
-  pictureUrl: string;
+  pictureUrl;
   uploadPercent: Observable<number>;
-  downloadURL: Observable<string>;
   currentFile;
 
   constructor(private firestore: AngularFirestore, private router: Router, private storage: AngularFireStorage) { }
@@ -53,13 +52,13 @@ export class AddCatchComponent implements OnInit {
   }
 
 
-  deleteLastUpload(){
-
+  deleteLastUpload() {
     if (this.currentFile) {
       const storageRef = this.currentFile;
       storageRef.delete();
     }
   }
+
 
   uploadFile(event) {
     const file = event.target.files[0];
@@ -67,17 +66,13 @@ export class AddCatchComponent implements OnInit {
     const fileRef = this.storage.ref(filePath);
     this.currentFile = fileRef;
     const task = this.storage.upload(filePath, file);
-    this.pictureUrl = 'gs://my-fishing-journal.appspot.com/' + filePath + ".jpg";
-
-    // observe percentage changes
-    this.uploadPercent = task.percentageChanges();
-    // get notified when the download URL is available
+    this.uploadPercent = task.percentageChanges();    // observe percentage changes
     task.snapshotChanges().pipe(
-      finalize(() => this.downloadURL = fileRef.getDownloadURL())
-    )
-      .subscribe()
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; }); // saves url of image to a variable
+      })
+    ).subscribe();
   }
-
 }
 
 

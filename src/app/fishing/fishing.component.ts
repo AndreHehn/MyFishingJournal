@@ -24,18 +24,20 @@ export class FishingComponent implements OnInit {
 
   }
 
+  
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       this.catchId = paramMap.get('id');
       this.getFish();
+      console.log(this.fish.picUrl);
     });
 
     // to show title:
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
+    if (!localStorage.getItem('foo')) {
+      localStorage.setItem('foo', 'no reload')
+      location.reload()
     } else {
-      localStorage.removeItem('foo') 
+      localStorage.removeItem('foo')
     }
   }
 
@@ -62,11 +64,17 @@ export class FishingComponent implements OnInit {
     const dialog = this.dialog.open(DialogDeleteEntryComponent);
     dialog.componentInstance.fish = new Fish(this.fish.toJson());
     dialog.componentInstance.catchId = this.catchId;
-    
+
   }
 
-  bigPicture(){
+
+  bigPicture() {
     const dialog = this.dialog.open(BigFishComponent);
     dialog.componentInstance.imagePath = this.fish.picUrl;
   }
+
 }
+
+
+
+

@@ -11,7 +11,7 @@ export class Fish {
     date: number;
     time: string ='';
     userId : string = '';
-    picUrl : string = '';
+    picUrl: string = '';
 
 
 

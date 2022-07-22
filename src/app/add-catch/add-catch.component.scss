@@ -39,14 +39,35 @@
 input[type="file"] {
     display: none;
 }
+
 .custom-file-upload {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
     gap: 8px;
+    color: #C7C7C7;
     cursor: pointer;
-    margin-top:0px;
-    &:hover{
-        color: #69F0AE;
+    margin-top: 0px;
+    border-bottom: 1px solid #C7C7C7;
+    padding-bottom: 16px;
+    width: calc(50% - 16px);
+
+    &:hover {
+        color: white;
+        border-bottom: 1px solid white;
     }
+
+
+}
+
+.preview {
+    width: 280px;
+    height: auto;
+}
+
+.picture-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
 }

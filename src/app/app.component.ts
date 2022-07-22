@@ -19,40 +19,27 @@ export class AppComponent {
   public ngOnInit() {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationStart) {
-        if (events.url === '/' || events.url === '/journal') {
-          this.title = "My fishing journal";
-        }
-        if (events.url === '/addcatch') {
-          this.title = "Add new catch";
-        }
-        if (events.url === '/analysis') {
-          this.title = "Analysis of all catches";
-        }
-        if (events.url === '/notes') {
-          this.title = "Notes";
-        }
-        if (events.url === '/settings') {
-          this.title = "Settings";
-        }
-        if (events.url === '/legal') {
-          this.title = "Legal Notice";
-        }
-        if (events.url === '/dataprotection') {
-          this.title = "Data Protection";
-        }
+        if (events.url === '/' || events.url === '/journal') this.title = "My fishing journal";
+        if (events.url === '/addcatch') this.title = "Add new catch";
+        if (events.url === '/analysis') this.title = "Analysis of all catches";
+        if (events.url === '/notes') this.title = "Notes";
+        if (events.url === '/settings') this.title = "Settings";
+        if (events.url === '/legal') this.title = "Legal Notice";
+        if (events.url === '/dataprotection') this.title = "Data Protection";
       }
     });
+
 
     if (this.authService.isLoggedIn) {
       this.connected = true;
     }
+
+
     if (!this.authService.isLoggedIn) {
       this.connected = false;
     }
 
-
-
-
+    
   }
 
 
