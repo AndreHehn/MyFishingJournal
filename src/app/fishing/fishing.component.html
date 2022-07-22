@@ -42,7 +42,12 @@
                     <td>{{ fish.weather }}</td>
                 </tr>
             </table>
-            <table>
+            <table class="second-table">
+                <tr class="show">
+                    <td><mat-icon>thermostat</mat-icon></td>
+                    <td>With a temperature of</td>
+                    <td>{{ fish.temperature }}°C</td>
+                </tr>
                 <tr>
                     <td><mat-icon>straighten</mat-icon></td>
                     <td>Length:</td>
@@ -58,7 +63,7 @@
                 <td>Comment:</td>
                 <td>{{ fish.comment }}</td>
             </tr>
-            <tr>
+            <tr class="hide">
                 <td><mat-icon>thermostat</mat-icon></td>
                 <td>With a temperature of</td>
                 <td>{{ fish.temperature }}°C</td>

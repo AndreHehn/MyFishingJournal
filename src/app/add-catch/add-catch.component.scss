@@ -69,3 +69,22 @@ input[type="file"] {
     flex-direction: column;
     gap: 8px;
 }
+
+
+@media only screen and (max-width:550px){
+
+    .add-wrap{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .inner-wrap {
+        width: 100%;
+    }
+
+    .custom-file-upload {
+        width:100%;
+        margin-bottom:16px;
+    }
+
+}

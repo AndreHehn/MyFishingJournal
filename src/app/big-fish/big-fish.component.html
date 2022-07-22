@@ -1,18 +1,22 @@
-<div class="dialog-container">
-    
-<img src="{{ imagePath }}" class="image">
+<mat-dialog-content>
+    <div class="dialog-container">
 
-    <div class="button-wrap">
-        <div class="picture-wrap">
-            <label for="files" class="custom-file-upload">
-                <input type="file" id="files" single accept="*.jpg" (change)="uploadFile($event)"
-                    (click)="deleteLastUpload()" placeholder="Upload a picture">
-                   Change picture <span *ngIf="uploadPercent">({{
-                    uploadPercent | async }}% uploaded)</span>
-            </label>
+        <img src="{{ imagePath }}" class="image">
+
+        <div class="button-wrap">
+            <div class="picture-wrap">
+                <label for="files" class="custom-file-upload">
+                    <input type="file" id="files" single accept="*.jpg" (change)="uploadFile($event)"
+                        (click)="deleteLastUpload()" placeholder="Upload a picture">
+                    <span> Change picture</span>
+                    <span *ngIf="uploadPercent">({{
+                        uploadPercent | async }}% uploaded)</span>
+                </label>
+            </div>
+            <button *ngIf="uploaded" color="accent" mat-button (click)="dialogRef.close(); saveEntry()">Save</button>
+            <button *ngIf="uploaded" color="accent" mat-button (click)="dialogRef.close(); deleteLastUpload()">Discard
+                and Close</button>
+            <button *ngIf="!uploaded" color="accent" mat-button (click)="dialogRef.close()">Close</button>
         </div>
-        <button *ngIf="uploaded" color="accent" mat-button (click)="dialogRef.close(); saveEntry()">Save</button>
-        <button *ngIf="uploaded" color="accent" mat-button (click)="dialogRef.close(); deleteLastUpload()">Discard and Close</button>
-        <button *ngIf="!uploaded" color="accent" mat-button (click)="dialogRef.close()">Close</button>
     </div>
-</div>
+</mat-dialog-content>

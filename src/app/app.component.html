@@ -55,9 +55,9 @@
 
 
 
-<div class="login-wrap">
+<div class="login-wrap" *ngIf="!connected">
 
-  <mat-card class="log-in" *ngIf="!connected">
+  <mat-card class="log-in" >
     <h1 color="accent">My fishing journal</h1>
     <span>With this little app you can document all catches.</span>
     <div class="displayTable">

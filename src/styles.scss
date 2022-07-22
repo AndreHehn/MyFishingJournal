@@ -12,5 +12,17 @@ body {
 
 .d-none {
     display: none !important;
-     
+
+}
+
+@media only screen and (max-width: 410px) {
+    #cdk-overlay-1{
+        width: 100% !important;
+        max-width: 100% !important;
+
+    }
+    .mat-dialog-container{
+        display:flex !important;
+        justify-content: center !important;
+    }
 }

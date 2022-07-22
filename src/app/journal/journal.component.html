@@ -1,3 +1,11 @@
+<div class="form-outer-wrap" [ngStyle]="{'display': showSearch ? 'flex' : 'none'}">
+    <div class="form-wrap">
+    <mat-form-field color="accent" appearance="standard">
+        <mat-label>Fish or Place?</mat-label>
+        <input matInput [(ngModel)]="searchValue" (ngModelChange)="ngOnInit()">
+    </mat-form-field>
+</div>
+</div>
 <mat-card>
     <table class="table">
         <tr>
@@ -12,12 +20,13 @@
                             [class.d-none]="(sortingBy[0]['sortedDown'] == '0')">north
                         </mat-icon>
                         <mat-icon (click)="sortBy('fish')" class="sort-arrow"
-                        [class.d-none]="(sortingBy[0]['sortedDown'] == '1' || sortingBy[0]['sortedUp'] =='1' )">unfold_more
-                    </mat-icon>
+                            [class.d-none]="(sortingBy[0]['sortedDown'] == '1' || sortingBy[0]['sortedUp'] =='1' )">
+                            unfold_more
+                        </mat-icon>
                     </div>
                 </div>
             </th>
-            <th>
+            <th class="media-off">
                 <div class="sorting-wrap">
                     <span (click)="sortBy('length')">Length</span>
                     <div class="icon-wrap">
@@ -51,7 +60,7 @@
                     </div>
                 </div>
             </th>
-            <th>
+            <th class="media-off">
                 <div class="sorting-wrap">
                     <span (click)="sortBy('date')">Date</span>
                     <div class="icon-wrap">
@@ -71,9 +80,9 @@
         </tr>
         <tr *ngFor="let fish of slicedArray" [routerLink]="['/details/' + fish.customId]">
             <td>{{ fish.fish | titlecase }}</td>
-            <td>{{ fish.length }} cm</td>
+            <td class="media-off">{{ fish.length }} cm</td>
             <td>{{ fish.place | titlecase }}</td>
-            <td>{{ fish.date | date : 'dd.MM.YYYY' }}</td>
+            <td class="media-off">{{ fish.date | date : 'dd.MM.YYYY' }}</td>
         </tr>
     </table>
 
@@ -82,11 +91,6 @@
     </mat-paginator>
 </mat-card>
 
-<div class="form-wrap" [ngStyle]="{'display': showSearch ? 'flex' : 'none'}">
-    <mat-form-field color="accent" appearance="standard">
-        <mat-label>Fish or Place?</mat-label>
-        <input matInput [(ngModel)]="searchValue" (ngModelChange)="ngOnInit()">
-    </mat-form-field>
-</div>
+
 <mat-icon class="search-icon" routerLink="/journal" routerLinkActive="router-link-active"
     (click)="showSearch = !showSearch; clearSearch()">search</mat-icon>
