@@ -21,7 +21,7 @@ export class BigFishComponent implements OnInit {
   pictureUrl;
   uploadPercent: Observable<number>;
   currentFile;
-  catchId;
+  catchId = '';
 
   constructor(
     public dialogRef: MatDialogRef<BigFishComponent>,
@@ -52,6 +52,7 @@ export class BigFishComponent implements OnInit {
       })
     ).subscribe();
     this.uploaded = true;
+    console.log(this.catchId);
   }
 
 

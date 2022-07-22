@@ -27,6 +27,7 @@ export class FishingComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.catchId = paramMap.get('id');
       this.getFish();
+      
     });
 
     // to show title:
@@ -67,6 +68,7 @@ export class FishingComponent implements OnInit {
 
   bigPicture() {
     const dialog = this.dialog.open(BigFishComponent);
+    dialog.componentInstance.fish = new Fish(this.fish.toJson());
     dialog.componentInstance.imagePath = this.fish.picUrl;
     dialog.componentInstance.catchId = this.catchId;
   }

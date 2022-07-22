@@ -35,7 +35,7 @@ export class AddCatchComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.fish.userId = this.user.uid;
     this.loading = true;
-    if (this.pictureUrl) this.fish.picUrl = this.pictureUrl;
+    this.fish.picUrl = (this.pictureUrl) ? this.pictureUrl : 'assets/img/logo.png'
     this.firestore
       .collection('fishes')
       .add(this.fish.toJson())
