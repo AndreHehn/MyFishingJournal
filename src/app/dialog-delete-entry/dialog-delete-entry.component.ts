@@ -40,8 +40,6 @@ export class DialogDeleteEntryComponent implements OnInit {
           this.router.navigate(['/journal']);
         }, 2000);
       });
-
-    this.storage.storage.refFromURL(this.imagePath).delete();
-
+    if (this.imagePath) this.storage.storage.refFromURL(this.imagePath).delete();
   };
 }

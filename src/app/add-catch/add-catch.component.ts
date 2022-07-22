@@ -34,7 +34,7 @@ export class AddCatchComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.fish.userId = this.user.uid;
     this.loading = true;
-    this.fish.picUrl = this.pictureUrl;
+    if (this.pictureUrl) this.fish.picUrl = this.pictureUrl;
     this.firestore
       .collection('fishes')
       .add(this.fish.toJson())
@@ -71,7 +71,7 @@ export class AddCatchComponent implements OnInit {
     task.snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; });
-        this.loading =false; // saves url of image to a variable
+        this.loading = false; // saves url of image to a variable
       })
     ).subscribe();
   }
