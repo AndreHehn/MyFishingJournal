@@ -29,8 +29,10 @@ export class AddCatchComponent implements OnInit {
 
   ngOnInit(): void { }
 
-
-  saveUser() {
+/**
+ * to save the Data @ angular firestore
+ */
+  addCatch() {
     this.fish.date = Number(new Date(this.date));
     this.user = JSON.parse(localStorage.getItem('user'));
     this.fish.userId = this.user.uid;

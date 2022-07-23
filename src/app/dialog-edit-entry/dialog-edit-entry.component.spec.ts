@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DialogEditEntryComponent } from './dialog-edit-entry.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { MatDialogRef } from '@angular/material/dialog';
 
 describe('DialogEditEntryComponent', () => {
   let component: DialogEditEntryComponent;
@@ -8,9 +11,16 @@ describe('DialogEditEntryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogEditEntryComponent ]
+      declarations: [DialogEditEntryComponent],
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+      ],
+      providers: [{
+        provide: MatDialogRef,
+        useValue: {}
+      }]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DialogEditEntryComponent);
     component = fixture.componentInstance;

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { Router, NavigationStart } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
 

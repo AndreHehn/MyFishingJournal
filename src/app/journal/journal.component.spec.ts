@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 import { JournalComponent } from './journal.component';
 
 describe('JournalComponent', () => {
@@ -8,7 +9,13 @@ describe('JournalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JournalComponent ]
+      declarations: [ JournalComponent ],
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+      ],
+      providers: [{
+        useValue: {}
+      }]
     })
     .compileComponents();
 

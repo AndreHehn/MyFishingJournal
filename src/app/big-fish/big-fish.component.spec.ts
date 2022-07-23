@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
 import { BigFishComponent } from './big-fish.component';
 
 describe('BigFishComponent', () => {
@@ -8,7 +11,15 @@ describe('BigFishComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BigFishComponent ]
+      declarations: [ BigFishComponent ],
+      imports: [
+        MatDialogModule,
+        AngularFireModule.initializeApp(environment.firebase)
+      ],
+      providers: [{
+        provide: MatDialogRef,
+        useValue: {}
+      }]
     })
     .compileComponents();
 

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { user } from '@angular/fire/auth';
+import { Component, OnInit } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { PageEvent } from '@angular/material/paginator';
 import { Fish } from 'src/models/fish.class';
@@ -21,8 +21,8 @@ export class JournalComponent implements OnInit {
   slicedArray = [];
   showSearch = false;
   searchValue: String = '';
-  user = JSON.parse(localStorage.getItem('user'));
-  userId = this.user.uid;
+  user;
+  userId: string = '';
   sortingBy = [
     {
       "name": "fish",
@@ -57,6 +57,8 @@ export class JournalComponent implements OnInit {
       this.ifChecksForNgOnInit();
       this.slicedArray = this.renderArray;
     });
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.userId = (this.user) ? this.user.uid : '';
   }
 
 
