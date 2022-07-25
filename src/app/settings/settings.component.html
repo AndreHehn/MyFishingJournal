@@ -1,0 +1,12 @@
+<mat-card class="settings">
+    <div>
+        <span>What is your name?</span><br>
+        <mat-form-field appearance="standard" color="accent" class="full-width">
+            <input [disabled]="loading" [(ngModel)]="name" matInput placeholder="Name">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="button-wrap">
+        <button color="accent" [disabled]="loading" mat-button (click)="saveName()" cdkFocusInitial>Save</button>
+    </div>
+
+</mat-card>

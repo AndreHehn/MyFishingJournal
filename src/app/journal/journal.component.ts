@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { PageEvent } from '@angular/material/paginator';
 import { Fish } from 'src/models/fish.class';

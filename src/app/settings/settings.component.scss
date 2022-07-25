@@ -1,0 +1,20 @@
+.full-width {
+    width: 280px;
+}
+
+.button-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .full-width {
+        width: 240px;
+    }
+
+}

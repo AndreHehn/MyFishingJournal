@@ -108,7 +108,7 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
-        this.router.navigate(['journal']);
+        this.router.navigate(['/dashboard']);
         location.reload();
       }
     });
@@ -120,7 +120,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['journal']);
+          this.router.navigate(['/settings']);
           location.reload();
         });
         this.SetUserData(result.user);
@@ -135,7 +135,7 @@ export class AuthService {
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userData: User = { uid: user.uid, };
+    const userData: User = { uid: user.uid};
     return userRef.set(userData, { merge: true, });
   }
 

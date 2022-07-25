@@ -6,18 +6,19 @@
     </div>
     <ul>
       <li class="no-cursor"></li>
+      <li routerLink="/dashboard" routerLinkActive="router-link-active" (click)="drawer.toggle()">
+        <mat-icon>dashboard</mat-icon>Dashboard
+      </li>
       <li routerLink="/journal" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>set_meal</mat-icon>Journal
       </li>
       <li routerLink="/addcatch" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>phishing</mat-icon>Add Catch
       </li>
-      <!--
-      <li class="no-cursor"></li>
       <li class="no-cursor"></li>
       <li routerLink="/settings" routerLinkActive="router-link-active" (click)="drawer.toggle()">
         <mat-icon>settings</mat-icon>Settings
-      </li>-->
+      </li>
       <li class="no-cursor"></li>
       <li (click)="authService.SignOut()">
         <mat-icon>logout</mat-icon> Log Out
@@ -48,7 +49,7 @@
 </mat-drawer-container>
 
 <div class="login-wrap" *ngIf="!connected">
-  <mat-card class="log-in" >
+  <mat-card class="log-in">
     <h1 color="accent">My fishing journal</h1>
     <span>With this app you can keep track of all your catches.</span>
     <div class="displayTable">
@@ -81,7 +82,8 @@
             </button>
           </div>
           <div class="formGroup">
-            <button color="accent" mat-button type="button" class="btn googleBtn" (click)="authService.SignIn('guestuser@andrehehn.de', 'TestUser')">
+            <button color="accent" mat-button type="button" class="btn googleBtn"
+              (click)="authService.SignIn('guestuser@andrehehn.de', 'TestUser')">
               <i class="fab fa-google-plus-g"></i>
               Or log in as guest
             </button>

@@ -33,6 +33,8 @@ import { DataprotectComponent } from './dataprotect/dataprotect.component';
 import { DialogDeleteEntryComponent } from './dialog-delete-entry/dialog-delete-entry.component';
 import { DialogEditEntryComponent } from './dialog-edit-entry/dialog-edit-entry.component';
 import { BigFishComponent } from './big-fish/big-fish.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { BigFishComponent } from './big-fish/big-fish.component';
     DataprotectComponent,
     DialogDeleteEntryComponent,
     DialogEditEntryComponent,
-    BigFishComponent
+    BigFishComponent,
+    DashboardComponent,
+    SettingsComponent
   ],
   imports: [
 
