@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { Loader } from '@googlemaps/js-api-loader';
 import { Fish } from 'src/models/fish.class';
 import { BigFishComponent } from '../big-fish/big-fish.component';
 import { DialogDeleteEntryComponent } from '../dialog-delete-entry/dialog-delete-entry.component';
@@ -16,7 +17,10 @@ export class FishingComponent implements OnInit {
 
   catchId = '';
   fish: Fish = new Fish();
+  userId;
+  user;
   reloadCount: number = 0;
+  ownFish = false;
 
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
@@ -27,9 +31,8 @@ export class FishingComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.catchId = paramMap.get('id');
       this.getFish();
-      
     });
-
+    this.googleMapsOnInit();
     // to show title:
     if (!localStorage.getItem('foo')) {
       localStorage.setItem('foo', 'no reload')
@@ -37,6 +40,18 @@ export class FishingComponent implements OnInit {
     } else {
       localStorage.removeItem('foo')
     }
+  }
+
+  googleMapsOnInit() {
+    let loader = new Loader({
+      apiKey: 'AIzaSyBUXhxSdgd9_uluxA1sZlbeHZDNOv1IiZQ'
+    });
+    loader.load().then(() => {
+      new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 48.137154, lng: 11.576124 },
+        zoom: 10
+      })
+    })
   }
 
 
@@ -47,6 +62,9 @@ export class FishingComponent implements OnInit {
       .valueChanges()
       .subscribe((fish: any) => {
         this.fish = new Fish(fish);
+        this.user = JSON.parse(localStorage.getItem('user'));
+        this.userId = (this.user) ? this.user.uid : '';
+        this.ownFish = (this.fish.userId == this.userId) ? true : false;
       })
   }
 

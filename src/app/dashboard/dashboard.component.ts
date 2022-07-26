@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Loader } from '@googlemaps/js-api-loader';
 import { filter } from 'rxjs';
 import { Fish } from 'src/models/fish.class';
 import { User } from 'src/models/user.class';
@@ -52,8 +53,21 @@ export class DashboardComponent implements OnInit {
       this.firestore.collection('users').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
         this.Users = changes;
         this.functionsForOnInit();
+        this.googleMapsOnInit()
       });
     });
+  }
+
+  googleMapsOnInit() {
+    let loader = new Loader({
+      apiKey: 'AIzaSyBUXhxSdgd9_uluxA1sZlbeHZDNOv1IiZQ'
+    });
+    loader.load().then(() => {
+      new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 48.137154, lng: 11.576124 },
+        zoom: 10
+      })
+    })
   }
 
   functionsForOnInit() {

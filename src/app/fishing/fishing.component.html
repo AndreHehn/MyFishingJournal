@@ -3,14 +3,18 @@
     <button mat-icon-button [matMenuTriggerFor]="menu1" class="pin-right-upper-corner">
         <mat-icon>more_vert</mat-icon>
     </button>
-    <mat-menu #menu1="matMenu">
-        <button (click)="editEntry()" mat-menu-item>Edit</button>
-        <button (click)="deleteEntry()" mat-menu-item>Delete</button>
+    <mat-menu  #menu1="matMenu">
+        <button [disabled]="!ownFish" (click)="editEntry()" mat-menu-item>Edit</button>
+        <button [disabled]="!ownFish" (click)="deleteEntry()" mat-menu-item>Delete</button>
     </mat-menu>
     <img (click)="bigPicture()" src="{{ fish.picUrl }}">
     <div class="user-details">
         <h2> {{fish.fish | titlecase}}</h2>
         {{fish.length}} cm
+    </div>
+    <div class="maps">
+        <h2>This is where you caught all your Fishes:</h2>
+        <div id="map" class="mapdiv"></div>
     </div>
 </mat-card>
 

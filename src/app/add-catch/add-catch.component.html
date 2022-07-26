@@ -4,14 +4,15 @@
             <div class="inner-wrap">
                 <span>What kind of Fish have you caught?</span><br>
                 <mat-form-field appearance="standard" color="accent" class="full-width">
-                        <input [disabled]="loading" [(ngModel)]="fish.fish" matInput placeholder="Fish">
+                    <input [disabled]="loading" [(ngModel)]="fish.fish" matInput placeholder="Fish">
                 </mat-form-field>
             </div>
             <div class="inner-wrap">
                 <span>Where have you caught the fish?</span><br>
-                <mat-form-field appearance="standard" color="accent" class="full-width">
+                <div id="map" class="mapdiv"></div>
+                <!--<mat-form-field appearance="standard" color="accent" class="full-width">
                     <input [disabled]="loading" [(ngModel)]="fish.place" matInput placeholder="Place">
-                </mat-form-field>
+                </mat-form-field>-->
             </div>
         </div>
         <div class="add-wrap">
@@ -90,15 +91,15 @@
                 </mat-form-field>
             </div>
         </div>
-            <div class="picture-wrap">
-                <img class="preview" *ngIf="pictureUrl" src="{{ pictureUrl }}">
-                <label for="files" class="custom-file-upload">
-                    <input type="file" id="files" single accept="*.jpg .png" (change)="uploadFile($event)"
-                        (click)="deleteLastUpload()" placeholder="Upload a picture">
-                    <mat-icon>image</mat-icon> Choose a picture of the fish! <span *ngIf="uploadPercent">{{
-                        uploadPercent | async }}% uploaded</span>
-                </label>
-            </div>
+        <div class="picture-wrap">
+            <img class="preview" *ngIf="pictureUrl" src="{{ pictureUrl }}">
+            <label for="files" class="custom-file-upload">
+                <input type="file" id="files" single accept="*.jpg .png" (change)="uploadFile($event)"
+                    (click)="deleteLastUpload()" placeholder="Upload a picture">
+                <mat-icon>image</mat-icon> Choose a picture of the fish! <span *ngIf="uploadPercent">{{
+                    uploadPercent | async }}% uploaded</span>
+            </label>
+        </div>
     </div>
     <div class="button-wrap">
         <button [disabled]="loading" mat-button (click)="cancelAdd()" color="accent">Cancel</button>

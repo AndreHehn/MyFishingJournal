@@ -5,6 +5,7 @@ import { Fish } from 'src/models/fish.class';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Loader } from '@googlemaps/js-api-loader';
 
 @Component({
   selector: 'app-add-catch',
@@ -28,7 +29,18 @@ export class AddCatchComponent implements OnInit {
     private storage: AngularFireStorage) { }
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+    let loader = new Loader({
+      apiKey: 'AIzaSyBUXhxSdgd9_uluxA1sZlbeHZDNOv1IiZQ'
+    });
+    loader.load().then(() => {
+      new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 48.137154, lng:	11.576124 },
+        zoom: 10
+      })
+    })
+  }
 
   /**
    * to save the Data @ angular firestore
