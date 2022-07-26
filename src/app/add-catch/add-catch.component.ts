@@ -6,6 +6,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Loader } from '@googlemaps/js-api-loader';
+import { ApiKey } from 'src/models/apikey.class';
 
 @Component({
   selector: 'app-add-catch',
@@ -23,6 +24,7 @@ export class AddCatchComponent implements OnInit {
   uploadPercent: Observable<number>;
   currentFile;
   customId;
+  apikey: ApiKey = new ApiKey();
 
   constructor(private firestore: AngularFirestore,
     private router: Router,
@@ -32,7 +34,7 @@ export class AddCatchComponent implements OnInit {
   ngOnInit(): void {
 
     let loader = new Loader({
-      apiKey: 'AIzaSyBUXhxSdgd9_uluxA1sZlbeHZDNOv1IiZQ'
+      apiKey: this.apikey.apikey
     });
     loader.load().then(() => {
       new google.maps.Map(document.getElementById('map'), {

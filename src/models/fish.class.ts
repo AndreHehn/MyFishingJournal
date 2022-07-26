@@ -14,6 +14,8 @@ export class Fish {
     picUrl: string = '';
     timestamp: number;
     customId: string ='';
+    lng: number;
+    lat: number;
 
 
     constructor(obj?: any) {
@@ -31,6 +33,8 @@ export class Fish {
         this.picUrl = obj ? obj.picUrl : '';
         this.timestamp = obj ? obj.timestamp : '';
         this.customId = obj ? obj.customId : '';
+        this.lng = obj ? obj.lng : '';
+        this.lat = obj ? obj.lat : '';
     }
 
 
@@ -49,7 +53,9 @@ export class Fish {
             userId: this.userId,
             picUrl: this.picUrl,
             timestamp: this.timestamp,
-            customId: this.customId
+            customId: this.customId,
+            lat: this.lat,
+            lng: this.lng
         }
     }
 }

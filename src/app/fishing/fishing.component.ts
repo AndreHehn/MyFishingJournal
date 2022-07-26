@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Loader } from '@googlemaps/js-api-loader';
+import { ApiKey } from 'src/models/apikey.class';
 import { Fish } from 'src/models/fish.class';
 import { BigFishComponent } from '../big-fish/big-fish.component';
 import { DialogDeleteEntryComponent } from '../dialog-delete-entry/dialog-delete-entry.component';
@@ -21,7 +22,9 @@ export class FishingComponent implements OnInit {
   user;
   reloadCount: number = 0;
   ownFish = false;
+  apikey: ApiKey = new ApiKey();
 
+  
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
     private firestore: AngularFirestore) { }
@@ -44,7 +47,7 @@ export class FishingComponent implements OnInit {
 
   googleMapsOnInit() {
     let loader = new Loader({
-      apiKey: 'AIzaSyBUXhxSdgd9_uluxA1sZlbeHZDNOv1IiZQ'
+      apiKey: this.apikey.apikey
     });
     loader.load().then(() => {
       new google.maps.Map(document.getElementById('map'), {

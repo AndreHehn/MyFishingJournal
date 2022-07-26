@@ -96,6 +96,11 @@ mat-toolbar-row {
         display: flex;
         align-items: center;
     }
+    .logo{margin-left:16px;
+        height:38px;
+        width:auto;
+        filter: invert(100%) sepia(5%) saturate(0%) hue-rotate(322deg) brightness(105%) contrast(100%);
+    }
 }
 
 .log-in {

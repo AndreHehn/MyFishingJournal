@@ -19,13 +19,15 @@ export class AppComponent {
   public ngOnInit() {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationStart) {
-        if (events.url === '/' || events.url === '/journal') this.title = "My fishing journal";
+        if (events.url === '/' || events.url === '/dashboard') this.title = "Dashboard";
         if (events.url === '/addcatch') this.title = "Add new catch";
         if (events.url === '/analysis') this.title = "Analysis of all catches";
         if (events.url === '/notes') this.title = "Notes";
         if (events.url === '/settings') this.title = "Settings";
         if (events.url === '/legal') this.title = "Legal Notice";
         if (events.url === '/dataprotection') this.title = "Data Protection";
+        if (events.url === '/journal') this.title = "Journal";
+        if (events.url === '/settings') this.title = "Settings";
       }
     });
     this.connected = (this.authService.isLoggedIn) ? true : false;

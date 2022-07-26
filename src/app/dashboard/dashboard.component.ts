@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Loader } from '@googlemaps/js-api-loader';
 import { filter } from 'rxjs';
+import { ApiKey } from 'src/models/apikey.class';
 import { Fish } from 'src/models/fish.class';
 import { User } from 'src/models/user.class';
 
@@ -12,7 +13,7 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  apikey: ApiKey = new ApiKey();
   allFishes = [];
   currentUser: User = new User();
   varUser: User = new User();
@@ -60,7 +61,7 @@ export class DashboardComponent implements OnInit {
 
   googleMapsOnInit() {
     let loader = new Loader({
-      apiKey: 'AIzaSyBUXhxSdgd9_uluxA1sZlbeHZDNOv1IiZQ'
+      apiKey: this.apikey.apikey
     });
     loader.load().then(() => {
       new google.maps.Map(document.getElementById('map'), {
