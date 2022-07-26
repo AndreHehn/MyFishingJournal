@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
   bestFishCustomId;
   bestDayCustomId;
   favoriteCustomId;
+  SlidingPictureBool = true;
 
   constructor(private firestore: AngularFirestore,
     private router: Router
@@ -55,7 +56,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  functionsForOnInit(){
+  functionsForOnInit() {
     this.filterForNew();
     this.filterForBest();
     this.filterForUser(this.userId);
@@ -94,7 +95,7 @@ export class DashboardComponent implements OnInit {
     this.imageBestFish = userFishes[0]['picUrl'];
     this.bestFishLength = userFishes[0]['length'];
     this.bestFishName = userFishes[0]['fish'];
-    this.bestFishCustomId = userFishes[0]['customId'] ;
+    this.bestFishCustomId = userFishes[0]['customId'];
   }
 
 
@@ -110,6 +111,8 @@ export class DashboardComponent implements OnInit {
 
   imageSlider() {
     this.forLoopForImageSlider();
+    this.SlidingPictureBool = false;
+    setTimeout(() => { this.SlidingPictureBool = true; }, 10);
     this.currentImageForSlider = this.imagesForSlider[0]['picUrl'];
     this.currentImageForSlider2 = this.imagesForSlider2[0]['picUrl'];
     this.favoriteCustomId = this.imagesForSlider[0]['customId'];
@@ -142,7 +145,9 @@ export class DashboardComponent implements OnInit {
       this.currentImageForSlider2 = this.imagesForSlider2[j]['picUrl'];
       this.bestDayCustomId = this.imagesForSlider2[j]['customId'];
       this.currentImage++;
-    }, 3000);
+      this.SlidingPictureBool = false;
+      setTimeout(() => { this.SlidingPictureBool = true; }, 10);
+    }, 6000);
   }
 
 

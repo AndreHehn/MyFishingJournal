@@ -1,0 +1,46 @@
+.image-wrap {
+    max-height: 280px;
+    max-width: 520px;
+    height: 280px;
+    width: 520px;
+    overflow: hidden;
+
+}
+
+.fish-image {
+    height: 280px;
+    width: 520px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.animate {
+    animation: blur 6000ms ease;
+}
+
+
+@keyframes blur {
+    0% {
+        -webkit-filter: blur(10px);
+    }
+
+    10% {
+        -webkit-filter: blur(5px);
+    }
+
+    20% {
+        -webkit-filter: blur(0px);
+    }
+
+    80% {
+        -webkit-filter: blur(0px);
+    }
+
+    90% {
+        -webkit-filter: blur(5px);
+    }
+
+    100% {
+        -webkit-filter: blur(10px);
+    }
+}
