@@ -125,9 +125,7 @@ export class AuthService {
         });
         this.SetUserData(result.user);
       })
-      .catch((error) => {
-        window.alert(error);
-      });
+      .catch((error) => { window.alert(error);});
   }
 
   /* Setting up user data when sign in with username/password, 

@@ -21,6 +21,7 @@ export class AddCatchComponent implements OnInit {
   pictureUrl;
   uploadPercent: Observable<number>;
   currentFile;
+  customId;
 
   constructor(private firestore: AngularFirestore,
     private router: Router,
@@ -29,32 +30,54 @@ export class AddCatchComponent implements OnInit {
 
   ngOnInit(): void { }
 
-/**
- * to save the Data @ angular firestore
- */
+  /**
+   * to save the Data @ angular firestore
+   */
   addCatch() {
+    this.fish.timestamp = Number(new Date());
     this.fish.date = Number(new Date(this.date));
     this.user = JSON.parse(localStorage.getItem('user'));
     this.fish.userId = this.user.uid;
     this.loading = true;
     this.fish.picUrl = (this.pictureUrl) ? this.pictureUrl : 'assets/img/logo.png'
+    this.uploadNewCatch();
+  }
+
+
+  uploadNewCatch() {
     this.firestore
       .collection('fishes')
       .add(this.fish.toJson())
       .then((ref) => {
-        this.loading = false;
-        let myID = ref.id;
-        this.router.navigate(['/details/' + myID]);
+        this.customId = ref.id;
+        this.fish.customId = this.customId
+        this.pushCustomIdToFish();
       });
   }
 
 
+  pushCustomIdToFish() {
+    this.firestore
+      .collection('fishes')
+      .doc(this.customId)
+      .update(this.fish.toJson())
+      .then(() => {
+        this.loading = false;
+        this.router.navigate(['/details/' + this.customId]);
+      });
+  }
+
+  /**
+   * if User doesn't want to store the catch:
+   */
   cancelAdd() {
     this.router.navigate(['/journal']);
     this.deleteLastUpload();
   }
 
-
+  /**
+   * deletes the last Upload to save space at backend.
+   */
   deleteLastUpload() {
     if (this.currentFile) {
       const storageRef = this.currentFile;
@@ -62,7 +85,10 @@ export class AddCatchComponent implements OnInit {
     }
   }
 
-
+  /**
+   * 
+   * Uploads picture to the fire storage.
+   */
   uploadFile(event) {
     this.loading = true;
     const file = event.target.files[0];
@@ -72,11 +98,17 @@ export class AddCatchComponent implements OnInit {
     const task = this.storage.upload(filePath, file);
     this.uploadPercent = task.percentageChanges();    // observe percentage changes
     task.snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; });
-        this.loading = false; // saves url of image to a variable
-      })
+      finalize(() => this.saveUrl(fileRef))
     ).subscribe();
+  }
+
+  /**
+   *  saves url of image to a variable
+   *
+   */
+  saveUrl(fileRef) {
+    fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; });
+    this.loading = false;
   }
 }
 

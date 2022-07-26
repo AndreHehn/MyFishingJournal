@@ -9,8 +9,6 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-
-
   loading;
   user;
   Users = [];
@@ -18,7 +16,9 @@ export class SettingsComponent implements OnInit {
   userId: string = '';
   name;
   saved = false;
+  
   constructor(private firestore: AngularFirestore, public dialog: MatDialog) { }
+
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -48,11 +48,7 @@ export class SettingsComponent implements OnInit {
 
   filterForUser() {
     let userArray = [];
-    for (let i = 0; i < this.Users.length; i++) {
-      if (this.Users[i]['uid'] == this.userId) {
-        userArray.push(this.Users[i]);
-      }
-    }
+    for (let i = 0; i < this.Users.length; i++)  if (this.Users[i]['uid'] == this.userId) userArray.push(this.Users[i]);
     this.Users = userArray;
   }
 }

@@ -3,14 +3,12 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { PageEvent } from '@angular/material/paginator';
 import { Fish } from 'src/models/fish.class';
 
-
 @Component({
   selector: 'app-journal',
   templateUrl: './journal.component.html',
   styleUrls: ['./journal.component.scss']
 })
 export class JournalComponent implements OnInit {
-
   fish: Fish;
   allFishes = [];
   date: Date;
@@ -23,28 +21,11 @@ export class JournalComponent implements OnInit {
   user;
   userId: string = '';
   sortingBy = [
-    {
-      "name": "fish",
-      "sortedUp": "0",
-      "sortedDown": "0"
-    },
-    {
-      "name": "length",
-      "sortedUp": "0",
-      "sortedDown": "0"
-    },
-    {
-      "name": "place",
-      "sortedUp": "0",
-      "sortedDown": "0"
-    },
-    {
-      "name": "date",
-      "sortedUp": "0",
-      "sortedDown": "0"
-    }
+    { "name": "fish", "sortedUp": "0", "sortedDown": "0" },
+    { "name": "length", "sortedUp": "0", "sortedDown": "0" },
+    { "name": "place", "sortedUp": "0", "sortedDown": "0" },
+    { "name": "date", "sortedUp": "0", "sortedDown": "0" }
   ];
-
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -63,11 +44,7 @@ export class JournalComponent implements OnInit {
 
   filterForUser() {
     let userFishes = [];
-    for (let i = 0; i < this.allFishes.length; i++) {
-      if (this.allFishes[i]['userId'] == this.userId) {
-        userFishes.push(this.allFishes[i]);
-      }
-    }
+    for (let i = 0; i < this.allFishes.length; i++)  if (this.allFishes[i]['userId'] == this.userId) userFishes.push(this.allFishes[i]);
     this.allFishes = userFishes;
   }
 
@@ -76,12 +53,10 @@ export class JournalComponent implements OnInit {
     let filteredArray = [];
     if (this.searchValue.length == 0) this.renderArray = this.allFishes;
     if (this.searchValue.length > 0) {
-      for (let i = 0; i < this.allFishes.length; i++) {
+      for (let i = 0; i < this.allFishes.length; i++)
         if (this.allFishes[i]['fish'].includes(this.searchValue.toLowerCase()) ||
-          this.allFishes[i]['place'].includes(this.searchValue.toLowerCase())) {
+          this.allFishes[i]['place'].includes(this.searchValue.toLowerCase()))
           filteredArray.push(this.allFishes[i]);
-        }
-      }
       this.renderArray = filteredArray;
     }
   }
@@ -142,9 +117,7 @@ export class JournalComponent implements OnInit {
   OnPageChange(event: PageEvent) {
     this.startIndex = event.pageIndex * event.pageSize;
     this.endIndex = this.startIndex + event.pageSize;
-    if (this.endIndex > this.renderArray.length) {
-      this.endIndex = this.renderArray.length;
-    }
+    if (this.endIndex > this.renderArray.length) this.endIndex = this.renderArray.length;
     this.slicedArray = this.renderArray.slice(this.startIndex, this.endIndex);
   }
 

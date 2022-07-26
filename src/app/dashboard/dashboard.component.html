@@ -1,20 +1,22 @@
 <mat-card class="dashboard">
     <h1>Hello {{currentUser.name}}, </h1>
-<div class="new-fish">
-    <h2>A new catch was added by {{varUser.name}}:</h2>
-    <img src="{{ imageNewFish }}" class="fish-image">
-</div>
-<div class="personal-best">
-    <h2>Your personal best:</h2>
-    <img src="{{ imageBestFish }}" class="fish-image"><span>with a length of {{ bestFishLength }}</span>
-</div>
-<div class="best-day">
-    <h2>The most fishes you have caught on:</h2>
-    <span>{{ bestDate  | date : 'dd.MM.YYYY' }}</span>
-</div>
-<div class="best-day">
-    <h2>Your favorite fish seems to be:</h2>
-    <span>{{ bestDate  | date : 'dd.MM.YYYY' }}</span>
-</div>
+    <div class="new-fish">
+        <h2>A new catch was added by {{varUser.name}}:</h2>
+        <img src="{{ imageNewFish }}" class="fish-image" [routerLink]="['/details/' + newFishCustomId]">
+    </div>
+    <div class="personal-best">
+        <h2>Your personal best is a {{ bestFishName }} with a length of
+            {{ bestFishLength }} cm</h2>
+        <img src="{{ imageBestFish }}" class="fish-image" [routerLink]="['/details/' + bestFishCustomId]">
+    </div>
+    <div class="best-day">
+        <h2>Your best fishing day was {{ bestDateToShow | date : 'dd.MM.YYYY' }} with {{ fishCounterBestDate }} fish(es) </h2>
+        <img [src]="currentImageForSlider2" class="fish-image" [routerLink]="['/details/' + bestDayCustomId]">
+    </div>
+    <div class="favorite">
+        <h2>Your favorite fish seems to be a
+            {{ favoriteFish }}</h2>
+        <img [src]="currentImageForSlider" class="fish-image" [routerLink]="['/details/' + favoriteCustomId]">
+    </div>
 
 </mat-card>

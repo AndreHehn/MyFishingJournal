@@ -12,7 +12,8 @@ export class Fish {
     time: string ='';
     userId : string = '';
     picUrl: string = '';
-
+    timestamp: number;
+    customId: string ='';
 
 
     constructor(obj?: any) {
@@ -28,7 +29,11 @@ export class Fish {
         this.time = obj ? obj.time : '';
         this.userId = obj ? obj.userId : '';
         this.picUrl = obj ? obj.picUrl : '';
+        this.timestamp = obj ? obj.timestamp : '';
+        this.customId = obj ? obj.customId : '';
     }
+
+
     public toJson() {
         return {
             fish: this.fish.toLowerCase(),
@@ -42,7 +47,9 @@ export class Fish {
             date: this.date,
             time: this.time,
             userId: this.userId,
-            picUrl: this.picUrl
+            picUrl: this.picUrl,
+            timestamp: this.timestamp,
+            customId: this.customId
         }
     }
 }
