@@ -67,7 +67,7 @@
                 </mat-form-field>
             </div>
             <div class="inner-wrap">
-                <span>At which temperature? (in °C)</span><br>
+                <span>At which temperature? (in °C)</span><span *ngIf="temperature"> - currently {{ temperature }}°C at your location</span><br>
                 <mat-form-field appearance="standard" color="accent" class="full-width">
                     <input [disabled]="loading" [(ngModel)]="fish.temperature" type="number" matInput
                         placeholder="Temperature">

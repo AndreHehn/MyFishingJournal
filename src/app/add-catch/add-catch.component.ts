@@ -20,6 +20,8 @@ export class AddCatchComponent implements OnInit {
   loading = false;
   valueChanged = false;
   user;
+  weatherArray;
+  temperature;
   pictureUrl;
   uploadPercent: Observable<number>;
   currentFile;
@@ -29,6 +31,8 @@ export class AddCatchComponent implements OnInit {
   latitude;
   apikey: ApiKey = new ApiKey();
   markers: google.maps.Marker[] = [];
+  currentLng;
+  currentLat;
 
   constructor(private firestore: AngularFirestore,
     private router: Router,
@@ -40,15 +44,21 @@ export class AddCatchComponent implements OnInit {
     let loader = new Loader({ apiKey: this.apikey.apikey });
     loader.load().then(() => {
       this.map = new google.maps.Map(document.getElementById('map'), { center: pos, zoom: 15 })
-      if (navigator.geolocation) navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          pos = { lat: position.coords.latitude, lng: position.coords.longitude };
-          this.map.setCenter(pos);
-        });
+      this.getLocationOfUser(pos);
       this.map.addListener("click", (e) => { this.placeMarkerAndPanTo(e.latLng, this.map); });
     });
   }
 
+
+  getLocationOfUser(pos) {
+    if (navigator.geolocation) navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
+      this.currentLat = position.coords.latitude;
+      this.currentLng = position.coords.longitude;
+      pos = { lat: position.coords.latitude, lng: position.coords.longitude };
+      this.map.setCenter(pos);
+      this.getUrlForWeather();
+    });
+  }
 
   placeMarkerAndPanTo(latLng: google.maps.LatLng, map: google.maps.Map) {
     for (let i = 0; i < this.markers.length; i++) this.markers[i].setMap(null);
@@ -144,6 +154,17 @@ export class AddCatchComponent implements OnInit {
     fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; });
     this.loading = false;
   }
+
+
+  async getUrlForWeather() {
+    let urlWeather = 'https://api.openweathermap.org/data/2.5/weather?lat=' + this.currentLat + '&lon=' + this.currentLng + '&appid=' + this.apikey.apiWeather;
+    let response = await fetch(urlWeather);
+    let responseAsJson = await response.json();
+    this.weatherArray = responseAsJson;
+    let temperatureInKelvin = this.weatherArray['main']['temp'];
+    this.temperature = Math.round(temperatureInKelvin - 273.15);
+  }
+
 }
 
 
