@@ -68,10 +68,9 @@ export class DashboardComponent implements OnInit {
     });
     loader.load().then(() => {
       this.map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 48.137154, lng: 11.576124 },
+        center: this.coordinatesArray[this.coordinatesArray.length - 1],
         zoom: 10
       })
-      this.map.panTo(this.coordinatesArray[this.coordinatesArray.length - 1]);
       for (let i = 0; i < this.coordinatesArray.length; i++) {
         let coordinates = this.coordinatesArray[i];
         new google.maps.Marker({ position: coordinates, map: this.map });
