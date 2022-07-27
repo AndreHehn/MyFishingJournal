@@ -33,4 +33,9 @@ export class AppComponent {
     this.connected = (this.authService.isLoggedIn) ? true : false;
   }
 
+
+  logOut(){
+    this.router.navigate(['/']);
+    this.authService.SignOut();
+  }
 }
