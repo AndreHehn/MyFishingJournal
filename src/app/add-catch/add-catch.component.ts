@@ -24,7 +24,11 @@ export class AddCatchComponent implements OnInit {
   uploadPercent: Observable<number>;
   currentFile;
   customId;
+  map;
+  longitude;
+  latitude;
   apikey: ApiKey = new ApiKey();
+  markers: google.maps.Marker[] = [];
 
   constructor(private firestore: AngularFirestore,
     private router: Router,
@@ -32,17 +36,31 @@ export class AddCatchComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    let loader = new Loader({
-      apiKey: this.apikey.apikey
-    });
+    let pos = { lat: 48.137154, lng: 11.576124 };
+    let loader = new Loader({ apiKey: this.apikey.apikey });
     loader.load().then(() => {
-      new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 48.137154, lng:	11.576124 },
-        zoom: 10
-      })
-    })
+      this.map = new google.maps.Map(document.getElementById('map'), { center: pos, zoom: 15 })
+      if (navigator.geolocation) navigator.geolocation.getCurrentPosition(
+        (position: GeolocationPosition) => {
+          pos = { lat: position.coords.latitude, lng: position.coords.longitude };
+          this.map.setCenter(pos);
+        });
+      this.map.addListener("click", (e) => { this.placeMarkerAndPanTo(e.latLng, this.map); });
+    });
   }
+
+
+  placeMarkerAndPanTo(latLng: google.maps.LatLng, map: google.maps.Map) {
+    for (let i = 0; i < this.markers.length; i++) this.markers[i].setMap(null);
+    this.markers = [];
+    this.latitude = latLng.lat();
+    this.longitude = latLng.lng();
+    let coordinates = { 'lat': this.latitude, 'lng': this.longitude };
+    let marker = new google.maps.Marker({ position: coordinates, map: map });
+    map.panTo(coordinates);
+    this.markers.push(marker);
+  }
+
 
   /**
    * to save the Data @ angular firestore
@@ -50,6 +68,8 @@ export class AddCatchComponent implements OnInit {
   addCatch() {
     this.fish.timestamp = Number(new Date());
     this.fish.date = Number(new Date(this.date));
+    this.fish.lng = this.longitude;
+    this.fish.lat = this.latitude;
     this.user = JSON.parse(localStorage.getItem('user'));
     this.fish.userId = this.user.uid;
     this.loading = true;
@@ -64,7 +84,7 @@ export class AddCatchComponent implements OnInit {
       .add(this.fish.toJson())
       .then((ref) => {
         this.customId = ref.id;
-        this.fish.customId = this.customId
+        this.fish.customId = this.customId;
         this.pushCustomIdToFish();
       });
   }

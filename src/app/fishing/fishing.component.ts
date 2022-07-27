@@ -22,9 +22,10 @@ export class FishingComponent implements OnInit {
   user;
   reloadCount: number = 0;
   ownFish = false;
+  map;
   apikey: ApiKey = new ApiKey();
 
-  
+
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
     private firestore: AngularFirestore) { }
@@ -45,12 +46,11 @@ export class FishingComponent implements OnInit {
     }
   }
 
+
   googleMapsOnInit() {
-    let loader = new Loader({
-      apiKey: this.apikey.apikey
-    });
+    let loader = new Loader({ apiKey: this.apikey.apikey });
     loader.load().then(() => {
-      new google.maps.Map(document.getElementById('map'), {
+      this.map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 48.137154, lng: 11.576124 },
         zoom: 10
       })
@@ -59,15 +59,16 @@ export class FishingComponent implements OnInit {
 
 
   getFish() {
-    this.firestore
-      .collection('fishes')
-      .doc(this.catchId)
-      .valueChanges()
+    this.firestore.collection('fishes')
+      .doc(this.catchId).valueChanges()
       .subscribe((fish: any) => {
         this.fish = new Fish(fish);
         this.user = JSON.parse(localStorage.getItem('user'));
         this.userId = (this.user) ? this.user.uid : '';
         this.ownFish = (this.fish.userId == this.userId) ? true : false;
+        let coordinates = { 'lat': this.fish.lat, 'lng': this.fish.lng };
+        new google.maps.Marker({ position: coordinates, map: this.map });
+        this.map.panTo(coordinates);
       })
   }
 

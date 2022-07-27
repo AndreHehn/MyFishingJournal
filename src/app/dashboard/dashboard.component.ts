@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
   Users = [];
   user;
   userId;
+  map;
   newCatchUserId;
   name;
   newFishCustomId;
@@ -41,6 +42,7 @@ export class DashboardComponent implements OnInit {
   bestDayCustomId;
   favoriteCustomId;
   SlidingPictureBool = true;
+  coordinatesArray = [];
 
   constructor(private firestore: AngularFirestore,
     private router: Router
@@ -54,7 +56,7 @@ export class DashboardComponent implements OnInit {
       this.firestore.collection('users').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
         this.Users = changes;
         this.functionsForOnInit();
-        this.googleMapsOnInit()
+        this.googleMapsOnInit();
       });
     });
   }
@@ -64,14 +66,19 @@ export class DashboardComponent implements OnInit {
       apiKey: this.apikey.apikey
     });
     loader.load().then(() => {
-      new google.maps.Map(document.getElementById('map'), {
+      this.map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 48.137154, lng: 11.576124 },
         zoom: 10
       })
+      for (let i = 0; i < this.coordinatesArray.length; i++) {
+        let coordinates = this.coordinatesArray[i];
+        new google.maps.Marker({ position: coordinates, map: this.map });
+      }
     })
   }
 
   functionsForOnInit() {
+    this.lngLatPushToArray();
     this.filterForNew();
     this.filterForBest();
     this.filterForUser(this.userId);
@@ -177,6 +184,18 @@ export class DashboardComponent implements OnInit {
       }
     this.bestDate = mostArray.sort((a, b) => mostArray.filter(v => v === a).length - mostArray.filter(v => v === b).length).pop();
     this.fishCounterBestDate = mostArray.length + 1;
+  }
+
+
+  lngLatPushToArray() {
+    for (let i = 0; i < this.allFishes.length; i++)
+      if (this.allFishes[i]['userId'] == this.userId && this.allFishes[i]['lat'] != undefined) {
+        let lat = this.allFishes[i]['lat'];
+        let lng = this.allFishes[i]['lng'];
+        let coordinates = { 'lat': lat, 'lng': lng };
+        this.coordinatesArray.push(coordinates);
+      }
+
   }
 
 
