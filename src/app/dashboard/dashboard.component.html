@@ -1,25 +1,25 @@
 <mat-card class="dashboard">
     <h1>Hello {{currentUser.name}}, </h1>
     <div class="wrap">
-        <div class="new-fish">
+        <div class="wrapper">
             <h2>A new catch was added by {{varUser.name}}:</h2>
             <img src="{{ imageNewFish }}" class="fish-image" [routerLink]="['/details/' + newFishCustomId]">
         </div>
-        <div class="personal-best">
+        <div class="wrapper">
             <h2>Your personal best is a {{ bestFishName }} with a length of
                 {{ bestFishLength }} cm:</h2>
             <img src="{{ imageBestFish }}" class="fish-image" [routerLink]="['/details/' + bestFishCustomId]">
         </div>
-        <div class="best-day">
+        <div class="wrapper">
             <h2>Your best fishing day was {{ bestDateToShow | date : 'dd.MM.YYYY' }} with {{ fishCounterBestDate }}
-                fish(es):
+                {{singularPlural}}:
             </h2>
             <div class="image-wrap">
                 <img [src]="currentImageForSlider2" class="fish-image animate" *ngIf="SlidingPictureBool"
                     [routerLink]="['/details/' + bestDayCustomId]">
             </div>
         </div>
-        <div class="favorite">
+        <div class="wrapper">
             <h2>Your favorite fish seems to be a
                 {{ favoriteFish }}:</h2>
             <div class="image-wrap">
@@ -27,8 +27,8 @@
                     [routerLink]="['/details/' + favoriteCustomId]">
             </div>
         </div>
-        <div class="maps">
-            <h2>This is where you caught all your Fishes:</h2>
+        <div class="wrapper">
+            <h2>This is where you caught all your fishes:</h2>
             <div id="map" class="mapdiv"></div>
         </div>
     </div>

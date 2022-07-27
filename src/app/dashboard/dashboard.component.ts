@@ -43,6 +43,7 @@ export class DashboardComponent implements OnInit {
   favoriteCustomId;
   SlidingPictureBool = true;
   coordinatesArray = [];
+  singularPlural = '';
 
   constructor(private firestore: AngularFirestore,
     private router: Router
@@ -74,6 +75,7 @@ export class DashboardComponent implements OnInit {
         let coordinates = this.coordinatesArray[i];
         new google.maps.Marker({ position: coordinates, map: this.map });
       }
+      this.map.panTo(this.coordinatesArray[this.coordinatesArray.length - 1]);
     })
   }
 
@@ -169,7 +171,7 @@ export class DashboardComponent implements OnInit {
       this.currentImage++;
       this.SlidingPictureBool = false;
       setTimeout(() => { this.SlidingPictureBool = true; }, 10);
-    }, 6000);
+    }, 8000);
   }
 
 
@@ -184,6 +186,7 @@ export class DashboardComponent implements OnInit {
       }
     this.bestDate = mostArray.sort((a, b) => mostArray.filter(v => v === a).length - mostArray.filter(v => v === b).length).pop();
     this.fishCounterBestDate = mostArray.length + 1;
+    this.singularPlural = (this.fishCounterBestDate > 1) ? 'fishes' : 'fish';
   }
 
 

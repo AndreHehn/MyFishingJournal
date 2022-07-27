@@ -42,22 +42,22 @@ input[type="file"] {
     justify-content: flex-start;
     align-items: flex-end;
     gap: 8px;
-    color: #C7C7C7;
+    color: #FFFFFF;
     cursor: pointer;
     margin-top: 0px;
     border-bottom: 1px solid #C7C7C7;
     padding-bottom: 16px;
-    width: calc(50% - 16px);
+    width: 100%;
 
     &:hover {
-        color: white;
+
         border-bottom: 1px solid white;
     }
 }
 
 .preview {
-    width: 280px;
-    height: auto;
+    width: auto;
+    height: 200px;
 }
 
 .picture-wrap {
@@ -66,14 +66,21 @@ input[type="file"] {
     gap: 8px;
 }
 
-.mapdiv{
-    height:200px;
-    width:100%;
+.mapdiv {
+    height: 200px;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
-@media only screen and (max-width:550px){
+.span-map {
+    color: #FFFFFF;
 
-    .add-wrap{
+}
+
+@media only screen and (max-width:550px) {
+
+    .add-wrap {
         flex-direction: column;
         width: 100%;
     }
@@ -83,7 +90,7 @@ input[type="file"] {
     }
 
     .custom-file-upload {
-        width:100%;
-        margin-bottom:16px;
+        width: 100%;
+        margin-bottom: 16px;
     }
 }

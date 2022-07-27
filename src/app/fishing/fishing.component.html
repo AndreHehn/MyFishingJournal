@@ -12,10 +12,6 @@
         <h2> {{fish.fish | titlecase}}</h2>
         {{fish.length}} cm
     </div>
-    <div class="maps">
-        <h2>This is where you caught all your Fishes:</h2>
-        <div id="map" class="mapdiv"></div>
-    </div>
 </mat-card>
 
 <mat-card class="mt-32">
@@ -45,6 +41,11 @@
                     <td> The weather was:</td>
                     <td>{{ fish.weather }}</td>
                 </tr>
+                <tr class="hide">
+                    <td><mat-icon>my_location</mat-icon></td>
+                    <td>This is where you caught the fish:</td>
+                    <td> </td>
+                </tr>
             </table>
             <table class="second-table">
                 <tr class="show">
@@ -72,7 +73,20 @@
                 <td>With a temperature of</td>
                 <td>{{ fish.temperature }}°C</td>
             </tr>
+            <tr class="hide">
+                <td> &nbsp; </td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            <tr class="show">
+                <td><mat-icon>my_location</mat-icon></td>
+                <td>This is where you caught the fish:</td>
+                <td> </td>
+            </tr>
             </table>
+        </div>
+        <div class="maps">
+            <div id="map" class="mapdiv"></div>
         </div>
     </mat-card-content>
 

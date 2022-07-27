@@ -67,8 +67,10 @@ export class FishingComponent implements OnInit {
         this.userId = (this.user) ? this.user.uid : '';
         this.ownFish = (this.fish.userId == this.userId) ? true : false;
         let coordinates = { 'lat': this.fish.lat, 'lng': this.fish.lng };
-        new google.maps.Marker({ position: coordinates, map: this.map });
-        this.map.panTo(coordinates);
+        if (this.fish.lat>0) {
+          new google.maps.Marker({ position: coordinates, map: this.map });
+          this.map.panTo(coordinates);
+        }
       })
   }
 

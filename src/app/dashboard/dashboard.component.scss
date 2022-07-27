@@ -4,12 +4,14 @@
     height: 280px;
     width: 520px;
     overflow: hidden;
-
 }
-.wrap{
-    display:flex;
+
+.wrap {
+    display: flex;
     flex-wrap: wrap;
-    gap:32px;
+    gap: 32px;
+    justify-content: center;
+
 }
 
 .fish-image {
@@ -20,13 +22,15 @@
 }
 
 .animate {
-    animation: blur 6000ms ease;
+    animation: blur 8s ease;
 }
 
-.mapdiv{
-    height:280px;
-    width:520px;
+.mapdiv {
+    height: 280px;
+    width: 1076px;
+    max-width: 100%;
 }
+
 
 @keyframes blur {
     0% {
@@ -52,4 +56,40 @@
     100% {
         -webkit-filter: blur(10px);
     }
+}
+
+@media only screen and (max-width:1234px) {
+    .mapdiv {
+        width: 520px;
+    }
+
+
+
+}
+
+@media only screen and (max-width:610px) {
+    .mapdiv {
+        width: calc(100vw - 32px);
+    }
+
+    .image-wrap {
+        max-width: 100%;
+        width: calc(100vw - 32px);
+        min-width: 100%;
+    }
+
+    .wrapper {
+        width: calc(100vw - 32px);
+
+        h2 {
+            width: calc(100vw - 32px);
+        }
+    }
+
+    .fish-image {
+        width: calc(100vw - 32px);
+
+        object-fit: cover !important;
+    }
+
 }
