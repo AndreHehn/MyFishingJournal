@@ -7,7 +7,7 @@
 
     img {
         width: 300px;
-        max-width:100%;
+        max-width: 100%;
         height: auto;
         margin: 16px 0px 16px 16px;
         border-radius: 10px;
@@ -16,9 +16,21 @@
     }
 }
 
-.mapdiv{
-    height:280px;
-    width:100%;
+mat-icon {
+height:100%;
+    width: 54px;
+    min-width: 54px;
+}
+
+.maps {
+    height:384px;
+    width: 50%;
+    padding-right: 16px;
+}
+
+.mapdiv {
+    height: 82%;
+    width: 100%;
 }
 
 .user-details {
@@ -37,7 +49,7 @@
 .pin-right-upper-corner {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 8px;
 }
 
 .back-icon {
@@ -47,28 +59,64 @@
     cursor: pointer;
 }
 
-table {
-    width: 50%;
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .table-wrap {
+    height:384px;
     display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-right: 16px;
 }
 
-.show {
-    display: none;
+.outer-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
+.inner-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+}
+
+.fixed-width {
+    min-width: 200px;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .fixed-width {
+        min-width: 150px;
+    }
+    .maps {
+        width: 100%;
+    }
+    .table-wrap {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 750px) {
+
+
+    .content-wrapper {
+        flex-direction: column;
+
+    }
+
+}
 
 @media only screen and (max-width: 580px) {
 
-    .show {
-        display: table-row;
-    }
-
-    .hide {
-        display: none;
-    }
 
     .user-deatail-header {
         flex-direction: column;
@@ -92,44 +140,13 @@ table {
         }
     }
 
-    .table-wrap {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-
-        table {
-            width: 100%;
-
-            tr {
-                td {
-                    width: 60%;
-
-                    &:first-child {
-                        width: 8%;
-                    }
-
-                    &:last-child {
-                        width: 32%;
-                    }
-                }
-            }
-        }
-    }
 }
 
 @media only screen and (max-width: 349px) {
 
 
-    table {
-        tr {
-            td {
-                width: 50%;
-
-                &:first-child {
-                    display: none;
-                }
-            }
-        }
+    mat-icon {
+        display: none;
     }
 
     .user-deatail-header {

@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
     loader.load().then(() => {
       this.map = new google.maps.Map(document.getElementById('map'), {
         center: this.coordinatesArray[this.coordinatesArray.length - 1],
-        zoom: 10
+        zoom: 15
       })
       for (let i = 0; i < this.coordinatesArray.length; i++) {
         let coordinates = this.coordinatesArray[i];

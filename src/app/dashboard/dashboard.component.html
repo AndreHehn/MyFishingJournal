@@ -2,6 +2,10 @@
     <h1>Hello {{currentUser.name}}, </h1>
     <div class="wrap">
         <div class="wrapper">
+            <h2>This is where you caught all your fishes:</h2>
+            <div id="map" class="mapdiv"></div>
+        </div>
+        <div class="wrapper">
             <h2>A new catch was added by {{varUser.name}}:</h2>
             <img src="{{ imageNewFish }}" class="fish-image" [routerLink]="['/details/' + newFishCustomId]">
         </div>
@@ -27,9 +31,6 @@
                     [routerLink]="['/details/' + favoriteCustomId]">
             </div>
         </div>
-        <div class="wrapper">
-            <h2>This is where you caught all your fishes:</h2>
-            <div id="map" class="mapdiv"></div>
-        </div>
+
     </div>
 </mat-card>

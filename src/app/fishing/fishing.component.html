@@ -3,7 +3,7 @@
     <button mat-icon-button [matMenuTriggerFor]="menu1" class="pin-right-upper-corner">
         <mat-icon>more_vert</mat-icon>
     </button>
-    <mat-menu  #menu1="matMenu">
+    <mat-menu #menu1="matMenu">
         <button [disabled]="!ownFish" (click)="editEntry()" mat-menu-item>Edit</button>
         <button [disabled]="!ownFish" (click)="deleteEntry()" mat-menu-item>Delete</button>
     </mat-menu>
@@ -18,76 +18,62 @@
     <mat-card-title>
         Details:
     </mat-card-title><br>
-    <mat-card-content>
-        <div class="table-wrap">
-            <table>
-                <tr>
-                    <td><mat-icon>scale</mat-icon></td>
-                    <td>Weight:</td>
-                    <td>{{ fish.weight }} grams</td>
-                </tr>
-                <tr>
-                    <td><mat-icon>place</mat-icon></td>
-                    <td>Caught near:</td>
-                    <td>{{ fish.place | titlecase }}</td>
-                </tr>
-                <tr>
-                    <td><mat-icon>question_mark</mat-icon></td>
-                    <td>With this method:</td>
-                    <td>{{ fish.method }}</td>
-                </tr>
-                <tr>
-                    <td><mat-icon>sunny</mat-icon></td>
-                    <td> The weather was:</td>
-                    <td>{{ fish.weather }}</td>
-                </tr>
-                <tr class="hide">
-                    <td><mat-icon>my_location</mat-icon></td>
-                    <td>This is where you caught the fish:</td>
-                    <td> </td>
-                </tr>
-            </table>
-            <table class="second-table">
-                <tr class="show">
-                    <td><mat-icon>thermostat</mat-icon></td>
-                    <td>With a temperature of</td>
-                    <td>{{ fish.temperature }}°C</td>
-                </tr>
-                <tr>
-                    <td><mat-icon>straighten</mat-icon></td>
-                    <td>Length:</td>
-                    <td>{{ fish.length }} cm</td>
-                </tr>
-                <tr>
-                    <td><mat-icon>calendar_month</mat-icon></td>
-                    <td>Caught on:</td>
-                    <td>{{ fish.date | date : 'dd.MM.yyyy' }} {{ fish.time }}</td>
-                </tr>
-            <tr>
-                <td><mat-icon>notes</mat-icon></td>
-                <td>Comment:</td>
-                <td>{{ fish.comment }}</td>
-            </tr>
-            <tr class="hide">
-                <td><mat-icon>thermostat</mat-icon></td>
-                <td>With a temperature of</td>
-                <td>{{ fish.temperature }}°C</td>
-            </tr>
-            <tr class="hide">
-                <td> &nbsp; </td>
-                <td> </td>
-                <td> </td>
-            </tr>
-            <tr class="show">
-                <td><mat-icon>my_location</mat-icon></td>
-                <td>This is where you caught the fish:</td>
-                <td> </td>
-            </tr>
-            </table>
-        </div>
+    <mat-card-content class="content-wrapper">
         <div class="maps">
+            <div class="inner-row">
+                <mat-icon>my_location</mat-icon><span>This is where you caught the fish:</span>
+            </div>
             <div id="map" class="mapdiv"></div>
         </div>
+        <div class="table-wrap">
+            <div class="outer-wrap">
+                <div class="inner-row">
+                    <mat-icon>scale</mat-icon>
+                    <p class="fixed-width">Weight:</p>
+                    <p>{{ fish.weight }} grams</p>
+                </div>
+                <div class="inner-row">
+                    <mat-icon>straighten</mat-icon>
+                    <p class="fixed-width">Length:</p>
+                    <p>{{ fish.length }} cm</p>
+                </div>
+            </div>
+            <div class="outer-wrap">
+                <div class="inner-row">
+                    <mat-icon>place</mat-icon>
+                    <p class="fixed-width">Caught near:</p>
+                    <p>{{ fish.place | titlecase }}</p>
+                </div>
+                <div class="inner-row">
+                    <mat-icon>calendar_month</mat-icon>
+                    <p class="fixed-width">Caught on:</p>
+                    <p>{{ fish.date | date : 'dd.MM.yyyy' }} {{ fish.time }}</p>
+                </div>
+            </div>
+            <div class="outer-wrap">
+                <div class="inner-row">
+                    <mat-icon>question_mark</mat-icon>
+                    <p class="fixed-width">With this method:</p>
+                    <p>{{ fish.method }}</p>
+                </div>
+                <div class="inner-row">
+                    <mat-icon>notes</mat-icon>
+                    <p class="fixed-width">Comment:</p>
+                    <p>{{ fish.comment }}</p>
+                </div>
+            </div>
+            <div class="outer-wrap">
+                <div class="inner-row">
+                    <mat-icon>sunny</mat-icon>
+                    <p class="fixed-width">The weather was:</p>
+                    <p>{{ fish.weather }}</p>
+                </div>
+                <div class="inner-row">
+                    <mat-icon>thermostat</mat-icon>
+                    <p class="fixed-width">With a temperature of</p>
+                    <p>{{ fish.temperature }}°C</p>
+                </div>
+            </div>
+        </div>
     </mat-card-content>
-
 </mat-card>
