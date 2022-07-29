@@ -63,21 +63,22 @@ export class DashboardComponent implements OnInit {
   }
 
   googleMapsOnInit() {
-    let loader = new Loader({
-      apiKey: this.apikey.apikey
-    });
+    let loader = new Loader({ apiKey: this.apikey.apikey });
     loader.load().then(() => {
+      let bounds = new google.maps.LatLngBounds();
       this.map = new google.maps.Map(document.getElementById('map'), {
         center: this.coordinatesArray[this.coordinatesArray.length - 1],
         zoom: 15
       })
       for (let i = 0; i < this.coordinatesArray.length; i++) {
-        let coordinates = this.coordinatesArray[i];
-        new google.maps.Marker({ position: coordinates, map: this.map });
-      }
+        new google.maps.Marker({ position: this.coordinatesArray[i], map: this.map });
+        bounds.extend(this.coordinatesArray[i]);
+      };
+      this.map.fitBounds(bounds);
     })
   }
 
+  
   functionsForOnInit() {
     this.lngLatPushToArray();
     this.filterForNew();
