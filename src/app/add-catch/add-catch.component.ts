@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Fish } from 'src/models/fish.class';
@@ -13,7 +13,7 @@ import { ApiKey } from 'src/models/apikey.class';
   templateUrl: './add-catch.component.html',
   styleUrls: ['./add-catch.component.scss']
 })
-export class AddCatchComponent implements OnInit {
+export class AddCatchComponent implements OnInit, OnDestroy {
 
   fish: Fish = new Fish();
   date: Date = new Date();
@@ -33,10 +33,17 @@ export class AddCatchComponent implements OnInit {
   markers: google.maps.Marker[] = [];
   currentLng;
   currentLat;
+  uploaded = false;
 
   constructor(private firestore: AngularFirestore,
     private router: Router,
-    private storage: AngularFireStorage) { }
+    private storage: AngularFireStorage) {
+  }
+
+
+  ngOnDestroy(): void {
+    if (this.uploaded) { this.deleteLastUpload(); }
+  }
 
 
   ngOnInit(): void {
@@ -153,6 +160,7 @@ export class AddCatchComponent implements OnInit {
   saveUrl(fileRef) {
     fileRef.getDownloadURL().subscribe(url => { this.pictureUrl = url; });
     this.loading = false;
+    this.uploaded = true;
   }
 
 
@@ -164,6 +172,11 @@ export class AddCatchComponent implements OnInit {
     let temperatureInKelvin = this.weatherArray['main']['temp'];
     this.temperature = Math.round(temperatureInKelvin - 273.15);
   }
+
+
+
+
+
 
 }
 
