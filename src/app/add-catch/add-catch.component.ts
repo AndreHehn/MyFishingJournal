@@ -34,6 +34,7 @@ export class AddCatchComponent implements OnInit, OnDestroy {
   currentLng;
   currentLat;
   uploaded = false;
+  saved = false;
 
   constructor(private firestore: AngularFirestore,
     private router: Router,
@@ -42,7 +43,7 @@ export class AddCatchComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    if (this.uploaded) { this.deleteLastUpload(); }
+    if (this.uploaded && !this.saved) { this.deleteLastUpload(); }
   }
 
 
@@ -92,6 +93,7 @@ export class AddCatchComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.fish.picUrl = (this.pictureUrl) ? this.pictureUrl : 'assets/img/logo.png'
     this.uploadNewCatch();
+    this.saved = true;
   }
 
 
