@@ -71,8 +71,8 @@ export class AddCatchComponent implements OnInit, OnDestroy {
   placeMarkerAndPanTo(latLng: google.maps.LatLng, map: google.maps.Map) {
     for (let i = 0; i < this.markers.length; i++) this.markers[i].setMap(null);
     this.markers = [];
-    this.latitude = latLng.lat();
-    this.longitude = latLng.lng();
+    if (latLng.lat) this.latitude = latLng.lat();
+    if (latLng.lng) this.longitude = latLng.lng();
     let coordinates = { 'lat': this.latitude, 'lng': this.longitude };
     let marker = new google.maps.Marker({ position: coordinates, map: map });
     map.panTo(coordinates);
@@ -86,8 +86,8 @@ export class AddCatchComponent implements OnInit, OnDestroy {
   addCatch() {
     this.fish.timestamp = Number(new Date());
     this.fish.date = Number(new Date(this.date));
-    this.fish.lng = this.longitude;
-    this.fish.lat = this.latitude;
+    this.fish.lng = (this.longitude) ? this.longitude: null;
+    this.fish.lat = (this.latitude) ? this.latitude: null;
     this.user = JSON.parse(localStorage.getItem('user'));
     this.fish.userId = this.user.uid;
     this.loading = true;
