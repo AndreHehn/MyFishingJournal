@@ -121,8 +121,8 @@ export class AddCatchComponent implements OnInit, OnDestroy {
         this.currentUser.uid = this.user.uid;
         this.currentUser.name = 'unknown User';
         this.firestore
-          .collection('users')
-          .add(this.currentUser.toJson());
+          .collection('users').doc(this.user.uid)
+          .set(this.currentUser.toJson());
       }
     });
   }

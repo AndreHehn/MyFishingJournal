@@ -204,15 +204,15 @@ export class DashboardComponent implements OnInit {
 
   checkForUser() {
     let userExists = false;
-    this.firestore.collection('users').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
+    this.firestore.collection('users').valueChanges({ idField: 'id' }).subscribe((changes: any) => {
       let userlist = changes;
-      userlist.forEach(element => { if (element.uid == this.user.uid) userExists = true });
+      userlist.forEach(element => { if (element.uid == this.user.uid) userExists = true; });
       if (!userExists) {
         this.currentUser.uid = this.user.uid;
-        this.currentUser.name = 'unknown User';
+        this.currentUser.name = 'unknown';
         this.firestore
-          .collection('users')
-          .add(this.currentUser.toJson());
+          .collection('users').doc(this.user.uid)
+          .set(this.currentUser.toJson());
       }
     });
   }
