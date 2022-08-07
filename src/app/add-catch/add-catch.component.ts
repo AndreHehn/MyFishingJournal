@@ -86,7 +86,6 @@ export class AddCatchComponent implements OnInit, OnDestroy {
    * to save the Data @ angular firestore
    */
   addCatch() {
-    this.checkForUser();
     this.fish.timestamp = Number(new Date());
     this.fish.date = Number(new Date(this.date));
     this.fish.lng = (this.longitude) ? this.longitude : null;
@@ -111,21 +110,6 @@ export class AddCatchComponent implements OnInit, OnDestroy {
       });
   }
 
-
-  checkForUser() {
-    let userExists = false;
-    this.firestore.collection('users').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
-      let userlist = changes;
-      userlist.forEach(element => { if (element.uid == this.user.uid) userExists = true });
-      if (!userExists) {
-        this.currentUser.uid = this.user.uid;
-        this.currentUser.name = 'unknown';
-        this.firestore
-          .collection('users').doc(this.user.uid)
-          .set(this.currentUser.toJson());
-      }
-    });
-  }
 
   pushCustomIdToFish() {
     this.firestore
