@@ -119,7 +119,7 @@ export class AddCatchComponent implements OnInit, OnDestroy {
       userlist.forEach(element => { if (element.uid == this.user.uid) userExists = true });
       if (!userExists) {
         this.currentUser.uid = this.user.uid;
-        this.currentUser.name = 'unknown User';
+        this.currentUser.name = 'unknown';
         this.firestore
           .collection('users').doc(this.user.uid)
           .set(this.currentUser.toJson());
