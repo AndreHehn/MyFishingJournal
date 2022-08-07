@@ -52,6 +52,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.userId = (this.user) ? this.user.uid : '';
+    this.checkForUser();
     this.firestore.collection('fishes').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
       this.allFishes = changes;
       this.firestore.collection('users').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
@@ -78,7 +79,7 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  
+
   functionsForOnInit() {
     this.lngLatPushToArray();
     this.filterForNew();
@@ -103,7 +104,7 @@ export class DashboardComponent implements OnInit {
   filterForNew() {
     let filterArray = this.allFishes;
     filterArray.sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1);
-    this.imageNewFish = filterArray[0]['picUrl'];
+    this.imageNewFish = filterArray[0]['picUrl'] ? filterArray[0]['picUrl'] : 'assets/img/logo.png';
     this.newCatchUserId = filterArray[0]['userId'];
     this.newFishCustomId = filterArray[0]['customId'];
   }
@@ -116,7 +117,7 @@ export class DashboardComponent implements OnInit {
         userFishes.push(this.allFishes[i]);
     this.allFishes = userFishes;
     userFishes.sort((a, b) => (a.length < b.length) ? 1 : -1);
-    this.imageBestFish = userFishes[0]['picUrl'];
+    this.imageBestFish = userFishes[0]['picUrl'] ? userFishes[0]['picUrl'] : 'assets/img/logo.png';
     this.bestFishLength = userFishes[0]['length'];
     this.bestFishName = userFishes[0]['fish'];
     this.bestFishCustomId = userFishes[0]['customId'];
@@ -137,8 +138,8 @@ export class DashboardComponent implements OnInit {
     this.forLoopForImageSlider();
     this.SlidingPictureBool = false;
     setTimeout(() => { this.SlidingPictureBool = true; }, 10);
-    this.currentImageForSlider = this.imagesForSlider[0]['picUrl'];
-    this.currentImageForSlider2 = this.imagesForSlider2[0]['picUrl'];
+    this.currentImageForSlider = this.imagesForSlider[0]['picUrl'] ? this.imagesForSlider[0]['picUrl'] : 'assets/img/logo.png';
+    this.currentImageForSlider2 = this.imagesForSlider2[0]['picUrl'] ? this.imagesForSlider2[0]['picUrl'] : 'assets/img/logo.png';
     this.favoriteCustomId = this.imagesForSlider[0]['customId'];
     this.bestDayCustomId = this.imagesForSlider2[0]['customId'];
     this.intervalForImageSlider();
@@ -164,9 +165,9 @@ export class DashboardComponent implements OnInit {
     setInterval(() => {
       let i = this.currentImage % this.imagesForSlider.length;
       let j = this.currentImage % this.imagesForSlider2.length;
-      this.currentImageForSlider = this.imagesForSlider[i]['picUrl'];
+      this.currentImageForSlider = this.imagesForSlider[i]['picUrl'] ? this.imagesForSlider[i]['picUrl'] : 'assets/img/logo.png';
       this.favoriteCustomId = this.imagesForSlider[i]['customId'];
-      this.currentImageForSlider2 = this.imagesForSlider2[j]['picUrl'];
+      this.currentImageForSlider2 = this.imagesForSlider2[j]['picUrl'] ? this.imagesForSlider2[i]['picUrl'] : 'assets/img/logo.png';
       this.bestDayCustomId = this.imagesForSlider2[j]['customId'];
       this.currentImage++;
       this.SlidingPictureBool = false;
@@ -198,8 +199,22 @@ export class DashboardComponent implements OnInit {
         let coordinates = { 'lat': lat, 'lng': lng };
         this.coordinatesArray.push(coordinates);
       }
-
   }
 
+
+  checkForUser() {
+    let userExists = false;
+    this.firestore.collection('users').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
+      let userlist = changes;
+      userlist.forEach(element => { if (element.uid == this.user.uid) userExists = true });
+      if (!userExists) {
+        this.currentUser.uid = this.user.uid;
+        this.currentUser.name = 'unknown User';
+        this.firestore
+          .collection('users')
+          .add(this.currentUser.toJson());
+      }
+    });
+  }
 
 }

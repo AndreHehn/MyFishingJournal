@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Fish } from 'src/models/fish.class';
+import { User } from 'src/models/user.class';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -15,6 +16,7 @@ import { ApiKey } from 'src/models/apikey.class';
 })
 export class AddCatchComponent implements OnInit, OnDestroy {
 
+  currentUser: User = new User();
   fish: Fish = new Fish();
   date: Date = new Date();
   loading = false;
@@ -84,10 +86,11 @@ export class AddCatchComponent implements OnInit, OnDestroy {
    * to save the Data @ angular firestore
    */
   addCatch() {
+    this.checkForUser();
     this.fish.timestamp = Number(new Date());
     this.fish.date = Number(new Date(this.date));
-    this.fish.lng = (this.longitude) ? this.longitude: null;
-    this.fish.lat = (this.latitude) ? this.latitude: null;
+    this.fish.lng = (this.longitude) ? this.longitude : null;
+    this.fish.lat = (this.latitude) ? this.latitude : null;
     this.user = JSON.parse(localStorage.getItem('user'));
     this.fish.userId = this.user.uid;
     this.loading = true;
@@ -108,6 +111,21 @@ export class AddCatchComponent implements OnInit, OnDestroy {
       });
   }
 
+
+  checkForUser() {
+    let userExists = false;
+    this.firestore.collection('users').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
+      let userlist = changes;
+      userlist.forEach(element => { if (element.uid == this.user.uid) userExists = true });
+      if (!userExists) {
+        this.currentUser.uid = this.user.uid;
+        this.currentUser.name = 'unknown User';
+        this.firestore
+          .collection('users')
+          .add(this.currentUser.toJson());
+      }
+    });
+  }
 
   pushCustomIdToFish() {
     this.firestore
