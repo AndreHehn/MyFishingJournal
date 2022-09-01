@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config($font-family: "'Roboto', sans-serif");
+@include mat-core($custom-typography);
+
 html,
 body {
     height: 100%;
@@ -7,7 +12,6 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .d-none {
@@ -16,13 +20,14 @@ body {
 }
 
 @media only screen and (max-width: 410px) {
-    #cdk-overlay-1{
+    #cdk-overlay-1 {
         width: 100% !important;
         max-width: 100% !important;
 
     }
-    .mat-dialog-container{
-        display:flex !important;
+
+    .mat-dialog-container {
+        display: flex !important;
         justify-content: center !important;
     }
 }
